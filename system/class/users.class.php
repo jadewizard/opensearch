@@ -1,7 +1,6 @@
 <?php
+require_once 'system/engine.php';
 
-include 'safemysql.class.php';
-require_once 'system/functions.php';
 $db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima','db' => 'db', 'charset' => 'utf8'));
 
 class UserFunctions
