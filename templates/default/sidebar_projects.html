@@ -1,0 +1,45 @@
+<div class="well">
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="index.php?page=projects">Проекты</a></li>
+    <li><a href="index.php?page=peoples">Люди</a></li>
+  </ul>
+</div>
+
+<div class="well">
+  <form method="post">
+    <div class="form-group">
+      <label for="select" class="control-label">Сфера деятельности</label>
+      <select class="form-control" id="select">
+        <option>Gamdev</option>
+        <option>Backend</option>
+        <option>Frontend</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="select" class="control-label">Язык программирования</label>
+      <select class="form-control" id="select">
+        <option>Gamdev</option>
+        <option>Backend</option>
+        <option>Frontend</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="select" class="control-label">Язык общения</label>
+      <select class="form-control" id="select">
+        <option>Gamdev</option>
+        <option>Backend</option>
+        <option>Frontend</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="select" class="control-label">Размер команды</label>
+      <select class="form-control" id="select">
+        <option>1-10</option>
+        <option>10-100</option>
+        <option>100-1000</option>
+      </select>
+    </div>
+    <a href="#" class="btn btn-sm btn-success btn-block">Подобрать</a>
+  </form>
+</div>
+{% include user_cabinet %}

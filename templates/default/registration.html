@@ -1,0 +1,23 @@
+  <form method="post">
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Логин</label>
+      <input class="form-control" name="login" id="focusedInput" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">E-Mail</label>
+      <input class="form-control" name="email" id="focusedInput" type="text">
+    </div>
+    <div class="form-group">
+    <label class="control-label" for="focusedInput">Имя</label>
+      <input class="form-control" name="name" id="focusedInput" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Пароль</label>
+      <input class="form-control" name="pass" id="focusedInput" type="password">
+    </div>
+    <div class="form-group">
+      <input class="btn btn-success" value="Зарегистрироваться" id="focusedInput" type="submit" onclick="validate(this.form)" name="send">
+    </div>
+  </form>
+  {{ message|raw }} 
+
