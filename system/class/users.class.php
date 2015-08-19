@@ -103,6 +103,7 @@ class UserFunctions
                 //Делаем ридерект
                 header('Location: '.get_url());
                 exit();
+                
             } else {
 
                 return 200; //Возвращаем ошибку, логин или пароль не верны
