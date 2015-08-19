@@ -1,14 +1,20 @@
 <?php
 
-include 'class/safemysql.class.php';
+/*
+Файл в котором подключаются все системные файлы
+Данные файл подключается к другим файлам
+Текущая версия скрипта - 0.1.3
+*/
 
-require_once 'vendor/autoload.php';
-require_once 'class/users.class.php';
-require_once 'functions.php';
+include 'class/safemysql.class.php'; //Класс для работы с БД
 
-Twig_Autoloader::register();
-$loader = new Twig_Loader_Filesystem('templates/default/');
-$twig = new Twig_Environment($loader);
+require_once 'vendor/autoload.php'; //Шаблонизатор
+require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
+require_once 'functions.php'; //Различные функции
+
+Twig_Autoloader::register(); 
+$loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
+$twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
 $user = new UserFunctions();
 
