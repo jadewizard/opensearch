@@ -89,7 +89,18 @@ class getContent extends ProjectContent
         
         $this->data = $db->getAll("SELECT * FROM os_projects_content WHERE id=".$id."");
         
-        $twig->addGlobal('content_array', $this->data[0]);
+        $twig->addGlobal('project_array', $this->data[0]);
+            
+        //return $this->data[0];
+	}
+
+	public function getMemberContent($id)
+	{
+		global $twig,$db;
+        
+        $this->data = $db->getAll("SELECT * FROM os_users_content WHERE id=".$id."");
+        
+        $twig->addGlobal('user_array', $this->data[0]);
             
         //return $this->data[0];
 	}

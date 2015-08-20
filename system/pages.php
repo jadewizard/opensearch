@@ -35,13 +35,13 @@ if (isset($_GET['page']))
         //Страница конкретного проекта
 	    case 'project':
 	          $sidebar = 'sidebar_project.html';
-			  $content = 'content_project.html';
+			  $content = 'project_page.html';
 			break;
 
         //Страница конкретного пользователя
-	    case 'user':
-	          $sidebar = 'sidebar_projects.html';
-			  $content = 'user_page.html';
+	    case 'member':
+	          $sidebar = 'sidebar_member.html';
+			  $content = 'member_page.html';
 			break;
 
 		//Страница регистрации
