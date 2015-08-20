@@ -19,7 +19,13 @@ if (isset($_POST['loginsend']))
         
         //Добавляем глобальную переменную MESSAGE, которая содержит в себе сообщение
         //полученое в ходе выполнения функции обработчика событий.
-        $twig->addGlobal('message', $msg);
+        $twig->addGlobal('login_message', $msg);
+
+	} else {
+        
+        //Если какое то из полей не заполнены
+		$twig->addGlobal('login_message', 'Введите логин и пароль!');
+
 	}
 }
 
