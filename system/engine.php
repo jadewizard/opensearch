@@ -11,12 +11,24 @@ include 'class/safemysql.class.php'; //Класс для работы с БД
 require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
 require_once 'functions.php'; //Различные функции
+require_once 'class/post.class.php'; //Класс для работы с постами на сайте
 
 Twig_Autoloader::register(); 
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
-$user = new UserFunctions();
+$user = new UserFunctions(); //Создаём класс для работы с пользователями
+
+/*
+Создаём новый экземпляр класса
+для работы с поставми на сайте
+*/
+$projectPost = new ProjectContent();
+/*
+Вызываем функцию котороая получит
+все посты из БД.
+*/
+$projectPost->getAll();
 
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
