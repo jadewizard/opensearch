@@ -25,6 +25,12 @@ $user = new UserFunctions(); //Создаём класс для работы с 
 */
 $projectPost = new ProjectContent(); //посты
 $userPost = new UserContent(); //пользователи
+
+/*
+Содержимое конкретного поста
+*/
+$getContent = new getContent();
+
 /*
 Вызываем функцию котороая получит
 все посты из БД.
@@ -32,9 +38,11 @@ $userPost = new UserContent(); //пользователи
 $projectPost->getAll(); //посты
 $userPost->getAll(); //пользователи
 
+
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
 require_once 'system/login.php'; //Вход на сайт
+require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
 ?>
