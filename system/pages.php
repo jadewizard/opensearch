@@ -49,6 +49,10 @@ if (isset($_GET['page']))
 		      $sidebar = 'sidebar_projects.html';
 			  $content = 'registration.html';
 			break;
+
+		default:
+		      $sidebar = 'sidebar_projects.html';
+			  $content = '404.html';
 	}
 
 } else {
