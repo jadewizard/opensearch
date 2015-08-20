@@ -31,8 +31,20 @@ class ProjectContent
         Полученный в ходе выполнения конструктора
         В массиве все посты из категории ПРОЕКТЫ.
         */
+        
+        $jsonField = $this->data;
 
+        foreach ($jsonField as $row) {
+        	return json_decode($row['info']);
+        }
+
+        $this->jsonToArray(1);
 		$twig->addGlobal('projects_array', $this->data);
+	}
+
+	public function jsonToArray($string)
+	{
+		return json_decode($string);
 	}
 }
 
