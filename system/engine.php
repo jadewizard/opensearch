@@ -23,12 +23,14 @@ $user = new UserFunctions(); //Создаём класс для работы с 
 Создаём новый экземпляр класса
 для работы с поставми на сайте
 */
-$projectPost = new ProjectContent();
+$projectPost = new ProjectContent(); //посты
+$userPost = new UserContent(); //пользователи
 /*
 Вызываем функцию котороая получит
 все посты из БД.
 */
-$projectPost->getAll();
+$projectPost->getAll(); //посты
+$userPost->getAll(); //пользователи
 
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
