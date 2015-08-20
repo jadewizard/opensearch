@@ -1,4 +1,4 @@
-{% for content in projects_list %}
+{% for content in projects_array %}
 
 <div class="well">
   <div class="media">
@@ -9,8 +9,8 @@
     </div>
     <div class="media-body">
       <h3 class="media-heading">{{ content.title }}</h3>
-      <p>Основан: 15.04.14 | Язык проекта: Русский | Основной ЯП: C++</p>
-      <p>В проект OPEN-SEVER требуются программисты, мы ведём разработку на языках C# и C++. В ближайших планах перенсти платформу Openserver на ОС LINUX и MAC OS. Будем рады всем кто захочем присоеденится и помочь проекту!</p>
+      <p>{{ content.info }}</p>
+      <p>{{ content.text }}</p>
     </div>
   </div>
   <p class="text-right">
