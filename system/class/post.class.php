@@ -94,6 +94,17 @@ class getContent extends ProjectContent
         //return $this->data[0];
 	}
 
+    /*
+    Функция достаёт из базы 
+    страницу пользователя 
+    которая имеет ID 
+    взятый из аргумента функии
+    getMemberContent и формерует
+    массив, который в дальнешейм
+    выводится на странице
+    юзера. Массив передаётся
+    шаблонизатору.
+    */
 	public function getMemberContent($id)
 	{
 		global $twig,$db;
