@@ -71,7 +71,24 @@ class UserContent extends ProjectContent
 	public function getAll()
 	{
 		global $twig;
-        
+
+
+        /*
+        С помощью цикла заменим элемент массива
+        skills массивом навыков юзера.
+        Массив навыокв получается
+        в результате выполнения функции
+        перевода json в array (jsonToArray)
+        которая встречается в родительском классе.
+        */
+
+        for ($i = 0;$i < count($this->data); $i++)
+        {   
+        	$skillsArray = $this->jsonToArray($this->data[$i]['skills']);
+
+        	$this->data[$i]['skills'] = $skillsArray;
+        }
+
         /*
         Передаём переменную в шаблонизатор
         Переменная содержит в себе массив
@@ -141,6 +158,15 @@ class getContent extends ProjectContent
 		global $twig,$db;
         
         $this->data = $db->getAll("SELECT * FROM os_users_content WHERE id=".$id."");
+
+        for ($i = 0;$i < count($this->data); $i++)
+        {   
+        	$infoArray = $this->jsonToArray($this->data[$i]['skills']);
+
+        	$this->data[$i]['skills'] = $infoArray;
+
+        	//print_r($this->data);
+        }
         
         $twig->addGlobal('user_array', $this->data[0]);
             

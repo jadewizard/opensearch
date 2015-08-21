@@ -9,7 +9,11 @@
 </div>
 <div class="media-body">
   <h3 class="media-heading">{{ content.name }}</h3>
-  <p>{{ content.skills }}</p>
+  <p>
+    <span class="label label-primary">Страна:<b>{{ content.country }}</b></span>
+    <span class="label label-primary">Возраст:<b>{{ content.age }}</b></span>
+    <span class="label label-primary">Основной язык программирования:<b>{{ content.skills.program_language }}</b></span>
+  </p>
   <p>{{ content.about }}</p>
 </div>
 </div>
