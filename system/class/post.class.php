@@ -27,7 +27,7 @@ class ProjectContent
         В массиве все посты из категории ПРОЕКТЫ.
         */
         
-        for ($i = 0;$i < count($this->data)-1; $i++)
+        for ($i = 0;$i < count($this->data); $i++)
         {   
         	$infoArray = $this->jsonToArray($this->data[$i]['info']);
 

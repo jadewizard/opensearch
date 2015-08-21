@@ -9,7 +9,12 @@
     </div>
     <div class="media-body">
       <h3 class="media-heading">{{ content.title }}</h3>
-      <p class="info">Язык программирования: <b>{{ content.info.program_language }}</b> Общение: <b>{{ content.info.project_language }}</b> Команда: <b>{{ content.info.team }} человек</b> </p>
+      <p class="info">
+      <span class="label label-primary">Язык программирования <b>{{ content.info.program_language }}</b></span>
+      <span class="label label-primary">Язык общения <b>{{ content.info.project_language }}</b></span>
+      <span class="label label-primary">Команда <b>{{ content.info.team }} человек</b></span>
+      <span class="label label-primary">Хостинг <b>{{ content.info.host }}</b></span>
+      </p>
       <p>{{ content.text }}</p>
     </div>
   </div>
