@@ -20,13 +20,14 @@ class ProjectContent
 	{
 		global $twig;
         
+
         /*
-        Передаём переменную в шаблонизатор
-        Переменная содержит в себе массив
-        Полученный в ходе выполнения конструктора
-        В массиве все посты из категории ПРОЕКТЫ.
+        С помощью цикла заменим элемент массива
+        INFO массивом дополнительной информации.
+        Массив с доп. информацией получается
+        в результате выполнения функции
+        перевода json в array (jsonToArray)
         */
-        
         for ($i = 0;$i < count($this->data); $i++)
         {   
         	$infoArray = $this->jsonToArray($this->data[$i]['info']);
@@ -34,7 +35,13 @@ class ProjectContent
         	$this->data[$i]['info'] = $infoArray;
         }
 
-        $twig->addGlobal('projects_array', $this->data);
+        /*
+        Передаём переменную в шаблонизатор
+        Переменная содержит в себе массив
+        Полученный в ходе выполнения конструктора
+        В массиве все посты из категории ПРОЕКТЫ.
+        */
+         $twig->addGlobal('projects_array', $this->data);
 	}
 
 	public function jsonToArray($string)
@@ -99,6 +106,13 @@ class getContent extends ProjectContent
 		global $twig,$db;
         
         $this->data = $db->getAll("SELECT * FROM os_projects_content WHERE id=".$id."");
+
+        for ($i = 0;$i < count($this->data); $i++)
+        {   
+        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
+
+        	$this->data[$i]['info'] = $infoArray;
+        }
         
         $twig->addGlobal('project_array', $this->data[0]);
             
