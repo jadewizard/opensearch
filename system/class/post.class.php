@@ -2,11 +2,6 @@
 
 class ProjectContent
 {
-	public $title;
-	public $text;
-	public $info;
-	public $author;
-	public $post_data;
 	public $data;
 
 	public function __construct()
@@ -32,20 +27,23 @@ class ProjectContent
         В массиве все посты из категории ПРОЕКТЫ.
         */
         
-        $jsonField = $this->data;
+        for ($i = 0;$i < count($this->data)-1; $i++)
+        {   
+        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
 
-        foreach ($jsonField as $row) {
-        	return json_decode($row['info']);
+        	$this->data[$i]['info'] = $infoArray;
         }
 
-        $this->jsonToArray(1);
-		$twig->addGlobal('projects_array', $this->data);
+        $twig->addGlobal('projects_array', $this->data);
 	}
 
 	public function jsonToArray($string)
 	{
-		return json_decode($string);
+
+		return json_decode($string,true);
+
 	}
+
 }
 
 class UserContent extends ProjectContent
@@ -62,6 +60,7 @@ class UserContent extends ProjectContent
 	Функция для передачи всех постов
 	в глобальнюу переменную шаблонизатор
 	*/
+
 	public function getAll()
 	{
 		global $twig;
