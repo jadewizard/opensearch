@@ -112,6 +112,12 @@ class getContent extends ProjectContent
         	$infoArray = $this->jsonToArray($this->data[$i]['info']);
 
         	$this->data[$i]['info'] = $infoArray;
+
+        	$tagsArray = explode(",", $this->data[$i]['tags']);
+
+        	$this->data[$i]['tags'] = $tagsArray;
+
+        	//print_r($this->data);
         }
         
         $twig->addGlobal('project_array', $this->data[0]);
