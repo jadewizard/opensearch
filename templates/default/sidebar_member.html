@@ -1,11 +1,11 @@
   <div class="well">
-    <img src="{{ user_array.avatar }}" width="220px" height="220px" class="img-polaroid">
+    <img src="{{ user_array.avatar }}" width="212px" height="220px" class="img-polaroid">
   </div>
   <div class="well">
    <b>Сфера деятелности</b>
-   <p>Разработка ПО</p>
+   <p>{{ user_array.info.action }}</p>
    <b>Основной язык программирвоания</b>
-   <p>{{ user_array.skills.programm_language }}</p>
+   <p>{{ user_array.info.programm_language }}</p>
    <b>Язык общения</b>
    <p>{{ user_array.info.language }}</p>
    <b>Возраст</b>
