@@ -6,6 +6,8 @@
 Текущая версия скрипта - 0.1.3
 */
 
+session_start();
+
 include 'class/safemysql.class.php'; //Класс для работы с БД
 
 require_once 'vendor/autoload.php'; //Шаблонизатор

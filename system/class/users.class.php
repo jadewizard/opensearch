@@ -1,6 +1,7 @@
 <?php
 require_once 'system/engine.php';
 
+
 $db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima','db' => 'db', 'charset' => 'utf8'));
 
 class UserFunctions
@@ -98,8 +99,7 @@ class UserFunctions
             if ($pass === md5(md5($user_pass)))
             {
                 $id = $query[0]['id'];
-                setcookie('id',$id,time()+86400*30);
-                setcookie('login',$user_login,time()+86400*30);
+                $_SESSION['user_id'] = $id;
                 //Делаем ридерект
                 header('Location: '.get_url());
                 exit();
@@ -120,22 +120,25 @@ class UserFunctions
     */
     public function GetUserCabinet($data)
     {
-        if (!empty($data['id']))
+
+        if (!empty($data['user_id']))
         {
 
             return 'cabinet.html';
+            //Если есть user_id, то выводим кабинет
 
         } else {
 
             return 'login.html';
+            //Иначе форму логина
 
         }
     }
 
     public function logout()
     {
-        setcookie('id','null',time()-86400*30);
-        setcookie('login','null',time()-86400*30);
+        unset($_SESSION['user_id']);
+        session_destroy();
         //Делаем ридерект
         header('Location: /');
         exit();

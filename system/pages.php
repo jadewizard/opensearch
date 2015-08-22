@@ -16,6 +16,7 @@ VAR SIDEBAR
 
 require_once 'engine.php';
 
+
 $core = null;
 /*
 Переменная core служит для передачи
@@ -82,7 +83,7 @@ if (isset($_GET['page']))
 $template = $twig->loadTemplate('index.html');
 
 //Функция которая проверит залогинен ли наш юзер
-$cabinet = $user->GetUserCabinet($_COOKIE);
+$cabinet = $user->GetUserCabinet($_SESSION);
 
 echo $template->render(array(
 	'sidebar' => $sidebar,
