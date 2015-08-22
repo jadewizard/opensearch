@@ -4,15 +4,15 @@
 <div class="media">
 <div class="media-left">
   <a href="#">
-    <img class="img-circle" src="http://i018.radikal.ru/1408/9c/464d6f9054ac.jpg" width="150px" height="150px">
+    <img class="img-circle" src="{{ content.avatar }}" width="150px" height="150px">
   </a>
 </div>
 <div class="media-body">
   <h3 class="media-heading">{{ content.name }}</h3>
   <p>
-    <span class="label label-primary">Страна:<b>{{ content.country }}</b></span>
-    <span class="label label-primary">Возраст:<b>{{ content.age }}</b></span>
-    <span class="label label-primary">Основной язык программирования:<b>{{ content.skills.program_language }}</b></span>
+    <span class="label label-primary">Страна: <b>{{ content.country }}</b></span>
+    <span class="label label-primary">Возраст: <b>{{ content.age }}</b></span>
+    <span class="label label-primary">Основной язык программирования: <b>{{ content.info.programm_language }}</b></span>
   </p>
   <p>{{ content.about }}</p>
 </div>

@@ -84,9 +84,9 @@ class UserContent extends ProjectContent
 
         for ($i = 0;$i < count($this->data); $i++)
         {   
-        	$skillsArray = $this->jsonToArray($this->data[$i]['skills']);
+        	$skillsArray = $this->jsonToArray($this->data[$i]['info']);
 
-        	$this->data[$i]['skills'] = $skillsArray;
+        	$this->data[$i]['info'] = $skillsArray;
         }
 
         /*
@@ -161,9 +161,9 @@ class getContent extends ProjectContent
 
         for ($i = 0;$i < count($this->data); $i++)
         {   
-        	$infoArray = $this->jsonToArray($this->data[$i]['skills']);
+        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
 
-        	$this->data[$i]['skills'] = $infoArray;
+        	$this->data[$i]['info'] = $infoArray;
 
         	//print_r($this->data);
         }

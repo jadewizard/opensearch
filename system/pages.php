@@ -27,9 +27,9 @@ if (isset($_GET['page']))
 			break;
         
         //Страница всех людей/
-		case 'peoples':
-			  $sidebar = 'sidebar_peoples.html';
-			  $content = 'single_user.html';
+		case 'members':
+			  $sidebar = 'sidebar_members.html';
+			  $content = 'single_member.html';
 			break;
         
         //Страница конкретного проекта
