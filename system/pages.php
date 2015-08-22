@@ -16,6 +16,12 @@ VAR SIDEBAR
 
 require_once 'engine.php';
 
+$core = null;
+/*
+Переменная core служит для передачи
+каких либо параметров шаблонизатору.
+*/
+
 if (isset($_GET['page']))
 {
 	switch ($_GET['page']) 
@@ -41,7 +47,14 @@ if (isset($_GET['page']))
         //Страница конкретного объявления
 	    case 'announce':
 	          $sidebar = 'sidebar_project.html';
-			  $content = 'project_page.html';
+			  $content = 'announcment_page.html';
+			  $core = 'announce';
+			  /*
+			  Указываем, что страница объявления.
+			  В дальншейм если эта переменная будет
+			  равна announe, то будет выводится кнопка
+			  страничка проекта.
+			  */
 			break;
 
         //Страница конкретного пользователя
@@ -65,8 +78,6 @@ if (isset($_GET['page']))
 	$sidebar = 'sidebar_projects.html';
 	$content = 'single_project.html';
 }
-
-$core = array('message' => 'asd');
 
 $template = $twig->loadTemplate('index.html');
 

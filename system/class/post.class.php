@@ -146,17 +146,13 @@ class getContent extends ProjectContent
 	{
 		global $twig,$db;
         
-        $this->data = $db->getAll("SELECT * FROM os_project_announcment WHERE id=".$id."");
+        $this->data = $db->getAll("SELECT * FROM os_project_content WHERE id=".$id."");
 
         for ($i = 0;$i < count($this->data); $i++)
         {   
         	$infoArray = $this->jsonToArray($this->data[$i]['info']);
 
         	$this->data[$i]['info'] = $infoArray;
-
-        	$tagsArray = explode(",", $this->data[$i]['tags']);
-
-        	$this->data[$i]['tags'] = $tagsArray;
 
         	//print_r($this->data);
         }

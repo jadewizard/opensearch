@@ -1,5 +1,7 @@
- <a href="index.php?page=project&id={{ project_array.id }}" class="btn btn-info btn-block">Страничка проекта</a>
- <p>
+{% if core == 'announce' %}
+<a href="index.php?page=project&id={{ project_array.id }}" class="btn btn-info btn-block">Страничка проекта</a>
+<p>
+{% endif %}
   <div class="well">
     <img src="{{ project_array.img }}" width="212px" height="220px" class="img-polaroid">
   </div>
