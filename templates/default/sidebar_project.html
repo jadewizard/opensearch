@@ -1,11 +1,11 @@
- <a href="#" class="btn btn-info btn-block">Страничка проекта</a>
+ <a href="index.php?page=project&id={{ project_array.id }}" class="btn btn-info btn-block">Страничка проекта</a>
  <p>
   <div class="well">
     <img src="{{ project_array.img }}" width="212px" height="220px" class="img-polaroid">
   </div>
   <div class="well">
    <b>Сфера деятелности</b>
-   <p>{{ project_array.info.program_language }}</p>
+   <p>{{ project_array.info.action }}</p>
    <b>Язык общения</b>
    <p>{{ project_array.info.project_language }}</p>
    <b>Основной язык программирования</b>

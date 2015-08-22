@@ -38,6 +38,12 @@ if (isset($_GET['page']))
 			  $content = 'project_page.html';
 			break;
 
+        //Страница конкретного объявления
+	    case 'announce':
+	          $sidebar = 'sidebar_project.html';
+			  $content = 'project_page.html';
+			break;
+
         //Страница конкретного пользователя
 	    case 'member':
 	          $sidebar = 'sidebar_member.html';

@@ -18,7 +18,7 @@ function sql_check($id)
 {
 	global $db;
 
-	$query = $db -> getAll("SELECT title FROM os_projects_content WHERE id=".$id."");
+	$query = $db -> getAll("SELECT title FROM os_project_announcment WHERE id=".$id."");
 
 	return $query;
 }

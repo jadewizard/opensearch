@@ -8,7 +8,7 @@ class ProjectContent
 	{
 		global $db;
 
-		$this->data = $db->getAll("SELECT * FROM os_projects_content");
+		$this->data = $db->getAll("SELECT * FROM os_project_announcment");
 
 	}
 
@@ -118,11 +118,35 @@ class getContent extends ProjectContent
     поста. Массив передаётся
     шаблонизатору.
     */
+	public function getAnnouncmentContent($id)
+	{
+		global $twig,$db;
+        
+        $this->data = $db->getAll("SELECT * FROM os_project_announcment WHERE id=".$id."");
+
+        for ($i = 0;$i < count($this->data); $i++)
+        {   
+        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
+
+        	$this->data[$i]['info'] = $infoArray;
+
+        	$tagsArray = explode(",", $this->data[$i]['tags']);
+
+        	$this->data[$i]['tags'] = $tagsArray;
+
+        	//print_r($this->data);
+        }
+        
+        $twig->addGlobal('project_array', $this->data[0]);
+            
+        //return $this->data[0];
+	}
+
 	public function getProjectContent($id)
 	{
 		global $twig,$db;
         
-        $this->data = $db->getAll("SELECT * FROM os_projects_content WHERE id=".$id."");
+        $this->data = $db->getAll("SELECT * FROM os_project_announcment WHERE id=".$id."");
 
         for ($i = 0;$i < count($this->data); $i++)
         {   
