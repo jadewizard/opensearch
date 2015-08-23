@@ -34,34 +34,9 @@ if (isset($_GET['page']))
 			break;
         
         //Страница всех людей/
-		case 'members':
-			  $sidebar = 'sidebar_members.html';
-			  $content = 'single_member.html';
-			break;
-        
-        //Страница конкретного проекта
-	    case 'project':
-	          $sidebar = 'sidebar_project.html';
-			  $content = 'project_page.html';
-			break;
-
-        //Страница конкретного объявления
-	    case 'announce':
-	          $sidebar = 'sidebar_project.html';
-			  $content = 'announcment_page.html';
-			  $core = 'announce';
-			  /*
-			  Указываем, что страница объявления.
-			  В дальншейм если эта переменная будет
-			  равна announe, то будет выводится кнопка
-			  страничка проекта.
-			  */
-			break;
-
-        //Страница конкретного пользователя
-	    case 'member':
-	          $sidebar = 'sidebar_member.html';
-			  $content = 'member_page.html';
+		case 'users':
+			  $sidebar = 'sidebar_users.html';
+			  $content = 'single_user.html';
 			break;
 
 		//Страница регистрации
@@ -78,6 +53,37 @@ if (isset($_GET['page']))
 } else {
 	$sidebar = 'sidebar_projects.html';
 	$content = 'single_project.html';
+}
+
+//Страница конкретного юзера
+//index.php?user=[ID]
+if (isset($_GET['user']))
+{
+	$sidebar = 'sidebar_user.html';
+	$content = 'user_page.html';	
+}
+
+//Страница конкретного проекта
+//index.php?project=[ID]
+if (isset($_GET['project']))
+{
+	$sidebar = 'sidebar_project.html';
+	$content = 'project_page.html';	
+}
+
+//Страница конкретного анонса
+//index.php?announcement=[ID]
+if (isset($_GET['announcement']))
+{
+	$sidebar = 'sidebar_project.html';
+	$content = 'announcment_page.html';
+	$core = 'announce';
+	/*
+	Указываем, что страница объявления.
+	В дальншейм если эта переменная будет
+	равна announe, то будет выводится кнопка
+	страничка проекта.
+	*/
 }
 
 $template = $twig->loadTemplate('index.html');

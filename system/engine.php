@@ -13,7 +13,7 @@ include 'class/safemysql.class.php'; //Класс для работы с БД
 require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
 require_once 'functions.php'; //Различные функции
-require_once 'class/post.class.php'; //Класс для работы с постами на сайте
+require_once 'class/content.class.php'; //Класс для работы с постами на сайте
 
 Twig_Autoloader::register(); 
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону

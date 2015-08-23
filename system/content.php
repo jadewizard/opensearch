@@ -2,64 +2,56 @@
 
 require_once 'engine.php';
 
-if (isset($_GET['page']) && $_GET['page'] == 'announce')
+if (isset($_GET['project']))
 {
-	if (isset($_GET['id']))
-	{
-		$id = auto_clean((int) $_GET['id']);
-		$check = sql_check($id);
+	$id = auto_clean((int) $_GET['project']);
+	$check = sql_check($id,'project');
 
-		if (count($check) > 0)
-		{
-			$getContent->getAnnouncmentContent($id);
+	if (count($check) > 0)
+	{
+		$getContent->getProjectContent($id);
 		    //print_r($postContent);
 
-		} else {
+	} else {
 
-			header('Location: index.php?page=404');
-
-		}
-	}
-
-} elseif (isset($_GET['page']) && $_GET['page'] == 'project') {
-
-	if (isset($_GET['id']))
-	{
-		$id = auto_clean((int) $_GET['id']);
-		$check = sql_check($id);
-
-		if (count($check) > 0)
-		{
-			$getContent->getProjectContent($id);
-		    //print_r($postContent);
-
-		} else {
-
-			header('Location: index.php?page=404');
-
-		}
+		header('Location: index.php?page=404');
 	}
 
 }
 
-if (isset($_GET['page']) && $_GET['page'] == 'member')
+if (isset($_GET['announcement']))
 {
-	if (isset($_GET['id']))
-	{
-		$id = auto_clean((int) $_GET['id']);
-		$check = sql_check($id);
+	$id = auto_clean((int) $_GET['announcement']);
+	$check = sql_check($id,'announcement');
 
-		if (count($check) > 0)
-		{
-			$getContent->getMemberContent($id);
+	if (count($check) > 0)
+	{
+		$getContent->getAnnouncmentContent($id);
 		    //print_r($postContent);
 
-		} else {
+	} else {
 
-			header('Location: index.php?page=404');
-			
-		}
+		header('Location: index.php?page=404');
 	}
+
 }
+
+if (isset($_GET['user']))
+{
+	$id = auto_clean((int) $_GET['user']);
+	$check = sql_check($id,'user');
+
+	if (count($check) > 0)
+	{
+		$getContent->getUserContent($id);
+		    //print_r($postContent);
+
+	} else {
+
+		header('Location: index.php?page=404');
+	}
+
+}
+
 
 ?>
