@@ -50,6 +50,15 @@ class ProjectContent
         $twig->addGlobal('announceContent',$this->data[0]);
     }
 
+    public function getThisProject($id)
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_project WHERE id='.$id.'');
+
+        $twig->addGlobal('projectContent',$this->data[0]);
+    }
+
     /*
     * Функция для получения
     * Информации о конерктном проекте

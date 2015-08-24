@@ -75,7 +75,7 @@ if (isset($_GET['project']))
 //index.php?announcement=[ID]
 if (isset($_GET['announcement']))
 {
-	$sidebar = 'sidebar_project.html';
+	$sidebar = 'sidebar_announce.html';
 	$content = 'announcment_page.html';
 	$core = 'announce';
 	/*

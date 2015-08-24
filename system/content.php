@@ -9,7 +9,7 @@ if (isset($_GET['project']))
 
 	if (count($check) > 0)
 	{
-		$getContent->getProjectContent($id);
+		$Project->getThisProject($id);
 		    //print_r($postContent);
 
 	} else {

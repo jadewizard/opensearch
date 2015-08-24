@@ -27,7 +27,7 @@ function sql_check($id,$type)
 
 	if ($type == 'project')
 	{
-	    $query = $db -> getAll("SELECT name FROM os_project_content WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT name FROM os_project WHERE id=".$id."");
 
 	    return $query;
 	}
