@@ -15,6 +15,15 @@ class ProjectContent
 
         $this->data = $db->getAll('SELECT * FROM os_announcment');
 
+        for ($i = 0;$i < count($this->data);$i++)
+        {
+            $id = $this->data[$i]['owner_id'];
+
+            $projectInfo = $this->getProjectInfo($id);
+
+            $this->data[$i] = array_merge($this->data[$i],$projectInfo[0]);
+        }
+
         $twig->addGlobal('announceAll',$this->data);
     }
 
