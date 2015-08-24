@@ -26,8 +26,7 @@ if (isset($_GET['announcement']))
 
 	if (count($check) > 0)
 	{
-		$getContent->getAnnouncmentContent($id);
-		    //print_r($postContent);
+		$Project->getThisAnnouncement($id);
 
 	} else {
 
