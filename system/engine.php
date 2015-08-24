@@ -25,20 +25,20 @@ $user = new UserFunctions(); //Создаём класс для работы с 
 Создаём новый экземпляр класса
 для работы с поставми на сайте
 */
-$projectPost = new ProjectContent(); //посты
-$userPost = new UserContent(); //пользователи
+$Project = new ProjectContent(); //посты
+//$userPost = new UserContent(); //пользователи
 
 /*
 Содержимое конкретного поста
 */
-$getContent = new getContent();
+//$getContent = new getContent();
 
 /*
 Вызываем функцию котороая получит
 все посты из БД.
 */
-$projectPost->getAll(); //посты
-$userPost->getAll(); //пользователи
+$Project->getAllAnnouncement(); //Объялвения
+//$userPost->getAll(); //пользователи
 
 
 require_once 'system/handler.php'; //Обработчик ошибок

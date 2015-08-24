@@ -34,7 +34,7 @@ function sql_check($id,$type)
 
 	if ($type == 'announcement')
 	{
-	    $query = $db -> getAll("SELECT title FROM os_project_announcment WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT title FROM os_announcment WHERE id=".$id."");
 
 	    return $query;
 	}
