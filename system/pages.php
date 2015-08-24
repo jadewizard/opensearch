@@ -89,7 +89,7 @@ if (isset($_GET['announcement']))
 $template = $twig->loadTemplate('index.html');
 
 //Функция которая проверит залогинен ли наш юзер
-$cabinet = $user->GetUserCabinet($_SESSION);
+$cabinet = $userContent->GetUserCabinet($_SESSION);
 
 echo $template->render(array(
 	'sidebar' => $sidebar,

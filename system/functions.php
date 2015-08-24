@@ -20,7 +20,7 @@ function sql_check($id,$type)
 
 	if ($type == 'user')
 	{
-	    $query = $db -> getAll("SELECT name FROM os_users WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT name FROM os_user WHERE id=".$id."");
 
 	    return $query;
 	} 

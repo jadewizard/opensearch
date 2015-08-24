@@ -72,4 +72,48 @@ class ProjectContent
     }
 }
 
+class UserContent
+{
+    public function getAllUser()
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_user');
+
+        $twig->addGlobal('allUser',$this->data);
+    }
+
+    public function getThisUser($id)
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_user WHERE id='.$id.'');
+
+        $twig->addGlobal('userContent',$this->data[0]);
+    }
+
+    /*
+    Функция которая проверяте
+    Залогинен ли юзер и возвращает
+    шаблон который нужно показать.
+    */
+    public function GetUserCabinet($data)
+    {
+
+        if (!empty($data['user_id']))
+        {
+
+            return 'cabinet.html';
+            //Если есть user_id, то выводим кабинет
+
+        } else {
+
+            return 'login.html';
+            //Иначе форму логина
+
+        }
+    }
+
+}
+
 ?>

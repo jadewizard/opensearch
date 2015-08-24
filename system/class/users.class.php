@@ -1,9 +1,6 @@
 <?php
 require_once 'system/engine.php';
 
-
-$db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima','db' => 'db', 'charset' => 'utf8'));
-
 class UserFunctions
 {
 	public $login;
@@ -109,28 +106,6 @@ class UserFunctions
                 return 200; //Возвращаем ошибку, логин или пароль не верны
 
             }
-
-        }
-    }
-
-    /*
-    Функция которая проверяте
-    Залогинен ли юзер и возвращает
-    шаблон который нужноп показать.
-    */
-    public function GetUserCabinet($data)
-    {
-
-        if (!empty($data['user_id']))
-        {
-
-            return 'cabinet.html';
-            //Если есть user_id, то выводим кабинет
-
-        } else {
-
-            return 'login.html';
-            //Иначе форму логина
 
         }
     }

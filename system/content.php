@@ -9,7 +9,7 @@ if (isset($_GET['project']))
 
 	if (count($check) > 0)
 	{
-		$Project->getThisProject($id);
+		$projectContent->getThisProject($id);
 		    //print_r($postContent);
 
 	} else {
@@ -26,7 +26,7 @@ if (isset($_GET['announcement']))
 
 	if (count($check) > 0)
 	{
-		$Project->getThisAnnouncement($id);
+		$projectContent->getThisAnnouncement($id);
 
 	} else {
 
@@ -42,7 +42,7 @@ if (isset($_GET['user']))
 
 	if (count($check) > 0)
 	{
-		$getContent->getUserContent($id);
+		$userContent->getThisUser($id);
 		    //print_r($postContent);
 
 	} else {
