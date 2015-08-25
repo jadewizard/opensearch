@@ -74,6 +74,8 @@ class ProjectContent
 
 class UserContent
 {
+    public $data;
+
     public function getAllUser()
     {
         global $db,$twig;

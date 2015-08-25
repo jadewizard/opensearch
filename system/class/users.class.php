@@ -3,11 +3,6 @@ require_once 'system/engine.php';
 
 class UserFunctions
 {
-	public $login;
-	public $password;
-	public $email;
-	public $group;
-	public $db;
 
     public function registration($login,$email,$pass,$name)
     {
@@ -19,12 +14,12 @@ class UserFunctions
         КОД сообщения который получен в ходе проверки
         */
 
-        $check_response = $this -> UserCheck($login,$email);
+        $check_response = $this->UserCheck($login,$email);
 
     	if ($check_response != 100 && $check_response != 110)
     	{
     		//Добавляем пользователя в БД
-            $query = $db->query("INSERT INTO os_users (login,pass,email,u_group,name) VALUES ('$login','$pass','$email','2','$name')");
+            $query = $db->query("INSERT INTO os_user (login,pass,email,u_group,name) VALUES ('$login','$pass','$email','2','$name')");
 
             if ($query == true)
             {   
@@ -54,7 +49,7 @@ class UserFunctions
         global $db;
 
         //Проверяем логин на занятость
-        $query = $db->getAll("SELECT id FROM os_users WHERE login = '$login'");
+        $query = $db->getAll("SELECT id FROM os_user WHERE login = '$login'");
 
         if (count($query) > 0)
         {
@@ -64,7 +59,7 @@ class UserFunctions
         } else {
 
             //иначе продолжаем проверку
-            $query = $db->getAll("SELECT id FROM os_users WHERE email = '$email'");
+            $query = $db->getAll("SELECT id FROM os_user WHERE email = '$email'");
 
             if (count($query) > 0)
             {
@@ -79,7 +74,7 @@ class UserFunctions
         global $db;
         
         //Проверяем есть ли такой логин
-        $query = $db->getAll("SELECT id FROM os_users WHERE login = '$user_login'");
+        $query = $db->getAll("SELECT id FROM os_user WHERE login = '$user_login'");
 
         if (count($query) == 0)
         {
@@ -89,7 +84,7 @@ class UserFunctions
         } else {
             
             //Иначе получаем пароль и сравниваем его с введёным (из формы)
-            $query = $db->getAll("SELECT id,pass FROM os_users WHERE login = '$user_login'");
+            $query = $db->getAll("SELECT id,pass FROM os_user WHERE login = '$user_login'");
 
             $pass = $query[0]['pass'];
 

@@ -39,7 +39,8 @@ if (isset($_POST['send']))
 	        $twig->addGlobal('message', $msg);
 
 	     } else {
-
+            
+            //Отправляем сообщение шаблонизатору
 	     	$twig->addGlobal('message', message($input = array('response' => '150')));
 
 	     }

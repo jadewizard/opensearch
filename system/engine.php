@@ -21,6 +21,7 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
+$user = new UserFunctions(); //Функции юзеров
 $projectContent = new ProjectContent(); //Объявления
 $userContent = new UserContent(); //Пользователи
 

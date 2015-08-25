@@ -50,9 +50,23 @@ if (isset($_GET['page']))
 			  $content = '404.html';
 	}
 
+	if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+	{
+		$sidebar = 'sidebar_projects.html';
+	    $content = 'userinfo.html';
+	} 
+
 } else {
 	$sidebar = 'sidebar_projects.html';
 	$content = 'single_project.html';
+}
+
+//Если пользователь уже авторизирован
+//То передаём шаблонизатор значение auth=1
+//Что бы запретить показ страницы регистрации.
+if (isset($_SESSION['user_id']))
+{
+	$twig->addGlobal('auth',1);
 }
 
 //Страница конкретного юзера
