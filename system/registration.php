@@ -54,7 +54,11 @@ if (isset($_POST['send']))
 	}
 }
 
+
+if (isset($_GET['page']) && ($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+
 if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+
 {   
 
 	if (isset($_POST['infosend']))
