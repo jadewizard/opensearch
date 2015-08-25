@@ -53,7 +53,11 @@ if (isset($_POST['send']))
 	}
 }
 
+<<<<<<< HEAD
 if (isset($_GET['page']) && ($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+=======
+if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+>>>>>>> 81fdf370f8ba18b12e13dfe2b1ef39fc04c61dfd
 {   
 
 	if (isset($_POST['infosend']))
