@@ -2,15 +2,15 @@
 	<form method="post">
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Сфера деятельности</label>
-			<input class="form-control" name="login" id="focusedInput" type="text" placeholder="gamdev, backend, frontend...">
+			<input class="form-control" name="action" id="focusedInput" type="text" placeholder="gamdev, backend, frontend...">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Основной язык программирования</label>
-			<input class="form-control" name="login" id="focusedInput" type="text" placeholder="c++, python, java" pattern="^[a-zA-Z]+$">
+			<input class="form-control" name="p_language" id="focusedInput" type="text" placeholder="c++, python, java" pattern="^[a-zA-Z]+$">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Язык общения</label>
-			<select class="form-control" id="select">
+			<select class="form-control" name='language' id="select">
 				<option>Ru/En</option>
 				<option>En</option>
 				<option>Ru</option>
@@ -18,23 +18,23 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Возраст</label>
-			<input class="form-control" name="login" id="focusedInput" type="text" pattern="^[ 0-9]+$" placeholder="18">
+			<input class="form-control" name="age" id="focusedInput" type="text" pattern="^[ 0-9]+$" placeholder="18">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Страна</label>
-			<input class="form-control" name="login" id="focusedInput" type="text" placeholder="Россия, Норвегия" pattern="^[a-zA-Z]+$">
+			<input class="form-control" name="country" id="focusedInput" type="text" placeholder="Россия, Норвегия" pattern="^[a-zA-Z]+$">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="focusedInput">Ссылка на GitHub,Bitbucket и т.д</label>
-			<input class="form-control" name="login" id="focusedInput" type="text" placeholder="" pattern="^[a-zA-Z]+$">
+			<input class="form-control" name="git" id="focusedInput" type="text" placeholder="" pattern="^[a-zA-Z]+$">
 		</div>
 		<div class="form-group">
 			<label for="textArea" class="control-label">О себе</label>
-				<textarea class="form-control" rows="5" id="textArea"></textarea>
+				<textarea class="form-control" name="about" rows="5" id="textArea"></textarea>
 		</div>
 		<div class="form-group">
-			<input class="btn btn-sm btn-info" value="Сохранить" id="focusedInput" type="submit" name="loginsend">
+			<input class="btn btn-sm btn-info" value="Сохранить" id="focusedInput" type="submit" name="infosend">
 		</div>
 	</form>
-	{{ login_message|raw }} 
+	{{ message|raw }} 
 </div>
