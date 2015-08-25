@@ -105,11 +105,11 @@ class UserFunctions
         }
     }
 
-    public function addUserInfo($infoArray)
+    public function addUserInfo($userInfoArray)
     {
         global $db;
 
-        $query = $db->query("INSERT INTO os_user (about,age,country,action,programm_language,language,p_url) VALUES ('$infoArray[about]','$infoArray[age]','$infoArray[country]','$infoArray[action]','$infoArray[p_language]','$infoArray[language]','$infoArray[git]')");
+        $query = $db->query("UPDATE os_user SET about='$userInfoArray[about]' WHERE id=51");
     }
 
     public function logout()

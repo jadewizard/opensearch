@@ -41,9 +41,8 @@ if (isset($_POST['send']))
 
 	        if ($response == 140)
 	        {
-	            //Если отвте 140, то будем ридеректить юзера
-	            //В его профиль, где отображаются настройк
-	            //О пользователе, язык общения и т.д.
+	            header('Location: index.php?page=registration&step=2&token='.futureID().'');
+	            exit();
 	        }
 
 
@@ -81,7 +80,7 @@ if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step'
 
 	    if (!empty($_POST['action']) && !empty($_POST['p_language']) && !empty($_POST['language']))
 	    {
-	         $info = array(
+	         $userInfoArray = array(
 		         'action' => auto_clean($_POST['action']),
 		         'p_language' =>  auto_clean($_POST['p_language']),
 		         'language' => auto_clean($_POST['language']),
@@ -91,7 +90,7 @@ if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step'
 		         'about' => auto_clean($_POST['about'])
 		     );
 
-		     $user->addUserInfo('asdas');
+		     $user->addUserInfo($userInfoArray);
 
 	    } else {
 
