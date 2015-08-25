@@ -1,3 +1,5 @@
+{% if auth != 1 %}
+<div class="well">
   <form method="post">
     <div class="form-group">
       <label class="control-label" for="focusedInput">Логин</label>
@@ -20,4 +22,9 @@
     </div>
   </form>
   {{ message|raw }} 
-
+</div>
+{% else %}
+<div class="well">
+Вы уже зарегистрированны :)
+</div>
+{% endif %}

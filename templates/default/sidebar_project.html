@@ -1,20 +1,15 @@
-{% if core == 'announce' %}
-<a href="index.php?page=project&id={{ project_array.id }}" class="btn btn-info btn-block">Страничка проекта</a>
-<p>
-{% endif %}
-<p>
-<a href="index.php?page=project&id={{ project_array.id }}" class="btn btn-warning btn-block">Приянть участие</a>
+<a href="index.php?page=project&id={{ announceContent.id }}" class="btn btn-warning btn-block">Приянть участие</a>
 </p>
   <div class="well">
-    <img src="{{ project_array.img }}" width="212px" height="220px" class="img-polaroid">
+    <img src="{{ projectContent.img }}" width="212px" height="220px" class="img-polaroid">
   </div>
   <div class="well">
    <b>Сфера деятелности</b>
-   <p>{{ project_array.info.action }}</p>
+   <p>{{ projectContent.action }}</p>
    <b>Язык общения</b>
-   <p>{{ project_array.info.project_language }}</p>
+   <p>{{ projectContent.project_language }}</p>
    <b>Основной язык программирования</b>
-   <p>{{ project_array.info.program_language }}</p>
+   <p>{{ projectContent.program_language }}</p>
    <b>Размер команды</b>
-   <p>{{ project_array.info.team }}</p>
+   <p>{{ projectContent.team }}</p>
  </div>

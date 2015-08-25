@@ -2,161 +2,119 @@
 
 class ProjectContent
 {
-	public $data;
-
-	public function __construct()
-	{
-		global $db;
-
-		$this->data = $db->getAll("SELECT * FROM os_project_announcment");
-
-	}
-
-	/*
-	Функция для передачи всех постов
-	в глобальнюу переменную шаблонизатор
-	*/
-	public function getAll()
-	{
-		global $twig;
-        
-
-        /*
-        С помощью цикла заменим элемент массива
-        INFO массивом дополнительной информации.
-        Массив с доп. информацией получается
-        в результате выполнения функции
-        перевода json в array (jsonToArray)
-        */
-        for ($i = 0;$i < count($this->data); $i++)
-        {   
-        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
-
-        	$this->data[$i]['info'] = $infoArray;
-        }
-
-        /*
-        Передаём переменную в шаблонизатор
-        Переменная содержит в себе массив
-        Полученный в ходе выполнения конструктора
-        В массиве все посты из категории ПРОЕКТЫ.
-        */
-         $twig->addGlobal('projects_array', $this->data);
-	}
-
-	public function jsonToArray($string)
-	{
-
-		return json_decode($string,true);
-
-	}
-
-}
-
-class UserContent extends ProjectContent
-{
-	
-	function __construct()
-	{
-		global $db;
-
-		$this->data = $db->getAll("SELECT * FROM os_users");
-	}
-
-	/*
-	Функция для передачи всех постов
-	в глобальнюу переменную шаблонизатор
-	*/
-
-	public function getAll()
-	{
-		global $twig;
-
-        /*
-        Передаём переменную в шаблонизатор
-        Переменная содержит в себе массив
-        Полученный в ходе выполнения конструктора
-        В массиве все посты из категории ЛЮДИ.
-        */
-
-		$twig->addGlobal('users_array', $this->data);
-	}
-
-}
-
-/*
-Класс для вывода содержимого конкретного поста
-на сайте.
-*/
-class getContent extends ProjectContent
-{
-    
-    /*
-    Функция достаёт из базы 
-    пост который имеет ID 
-    взятый из аргумента функии
-    getProjectContent и формерует
-    массив, который в дальнешейм
-    выводится на странице
-    поста. Массив передаётся
-    шаблонизатору.
-    */
-	public function getAnnouncmentContent($id)
-	{
-		global $twig,$db;
-        
-        $this->data = $db->getAll("SELECT * FROM os_project_announcment WHERE id=".$id."");
-
-        for ($i = 0;$i < count($this->data); $i++)
-        {   
-        	$infoArray = $this->jsonToArray($this->data[$i]['info']);
-
-        	$this->data[$i]['info'] = $infoArray;
-
-        	$tagsArray = explode(",", $this->data[$i]['tags']);
-
-        	$this->data[$i]['tags'] = $tagsArray;
-
-        	//print_r($this->data);
-        }
-        
-        $twig->addGlobal('project_array', $this->data[0]);
-            
-        //return $this->data[0];
-	}
-
-	public function getProjectContent($id)
-	{
-		global $twig,$db;
-        
-        $this->data = $db->getAll("SELECT * FROM os_project_content WHERE id=".$id."");
-        
-        $twig->addGlobal('project_array', $this->data[0]);
-            
-        //return $this->data[0];
-	}
+    public $data;
 
     /*
-    Функция достаёт из базы 
-    страницу пользователя 
-    которая имеет ID 
-    взятый из аргумента функии
-    getMemberContent и формерует
-    массив, который в дальнешейм
-    выводится на странице
-    юзера. Массив передаётся
-    шаблонизатору.
+    * Функция для получения
+    * Массива ВСЕХ объявлений
+    * Из БД.
     */
-	public function getUserContent($id)
-	{
-		global $twig,$db;
+    public function getAllAnnouncement()
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_announcment');
+
+        for ($i = 0;$i < count($this->data);$i++)
+        {
+            $id = $this->data[$i]['owner_id'];
+
+            $projectInfo = $this->getProjectInfo($id);
+
+            $this->data[$i] = array_merge($this->data[$i],$projectInfo[0]);
+        }
+
+        $twig->addGlobal('announceAll',$this->data);
+    }
+
+    /*
+    * Функция для получения
+    * Массива с контеном 
+    * Текущего (id) объявления
+    */
+    public function getThisAnnouncement($id)
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_announcment WHERE id='.$id.'');
+
+        // В переменной projectInfo хранится массив
+        // С данными о КОНКРЕТНОМ проекте из таблицы
+        // os_project.
+        $projectInfo = $this->getProjectInfo($this->data[0]['owner_id']);
         
-        $this->data = $db->getAll("SELECT * FROM os_users WHERE id=".$id."");
-        
-        $twig->addGlobal('user_array', $this->data[0]);
-            
-        //print_r ($this->data);
-	}
+        //Соеденяем два массива. Исходный и полученные в рез-те
+        //Работы функции getProjectInfo.
+        $this->data[0] = array_merge($this->data[0],$projectInfo[0]);
+
+        $twig->addGlobal('announceContent',$this->data[0]);
+    }
+
+    public function getThisProject($id)
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_project WHERE id='.$id.'');
+
+        $twig->addGlobal('projectContent',$this->data[0]);
+    }
+
+    /*
+    * Функция для получения
+    * Информации о конерктном проекте
+    * (Язык проекта, язык про-ния и т.д)
+    */
+    public function getProjectInfo($id)
+    {
+        global $db;
+
+        return $db->getAll('SELECT action,program_language,project_language,team,host FROM os_project WHERE id='.$id.'');;
+    }
+}
+
+class UserContent
+{
+    public $data;
+
+    public function getAllUser()
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_user');
+
+        $twig->addGlobal('allUser',$this->data);
+    }
+
+    public function getThisUser($id)
+    {
+        global $db,$twig;
+
+        $this->data = $db->getAll('SELECT * FROM os_user WHERE id='.$id.'');
+
+        $twig->addGlobal('userContent',$this->data[0]);
+    }
+
+    /*
+    Функция которая проверяте
+    Залогинен ли юзер и возвращает
+    шаблон который нужно показать.
+    */
+    public function GetUserCabinet($data)
+    {
+
+        if (!empty($data['user_id']))
+        {
+
+            return 'cabinet.html';
+            //Если есть user_id, то выводим кабинет
+
+        } else {
+
+            return 'login.html';
+            //Иначе форму логина
+
+        }
+    }
 
 }
 

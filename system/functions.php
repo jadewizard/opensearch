@@ -20,21 +20,21 @@ function sql_check($id,$type)
 
 	if ($type == 'user')
 	{
-	    $query = $db -> getAll("SELECT name FROM os_users WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT name FROM os_user WHERE id=".$id."");
 
 	    return $query;
 	} 
 
 	if ($type == 'project')
 	{
-	    $query = $db -> getAll("SELECT name FROM os_project_content WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT name FROM os_project WHERE id=".$id."");
 
 	    return $query;
 	}
 
 	if ($type == 'announcement')
 	{
-	    $query = $db -> getAll("SELECT title FROM os_project_announcment WHERE id=".$id."");
+	    $query = $db -> getAll("SELECT title FROM os_announcment WHERE id=".$id."");
 
 	    return $query;
 	}

@@ -43,6 +43,12 @@ function message($input)
                   </div>';
 			break;
 
+        case '160': //Пароль долже состоять минимум из 6 символов
+			return '<div class="alert alert-dismissible alert-danger">
+                  Заполните обязательные поля!
+                  </div>';
+			break;
+
 	//Ошибки при авторизации пользователя
         
         case '200':

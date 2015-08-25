@@ -50,9 +50,23 @@ if (isset($_GET['page']))
 			  $content = '404.html';
 	}
 
+	if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
+	{
+		$sidebar = 'sidebar_projects.html';
+	    $content = 'userinfo.html';
+	} 
+
 } else {
 	$sidebar = 'sidebar_projects.html';
 	$content = 'single_project.html';
+}
+
+//Если пользователь уже авторизирован
+//То передаём шаблонизатор значение auth=1
+//Что бы запретить показ страницы регистрации.
+if (isset($_SESSION['user_id']))
+{
+	$twig->addGlobal('auth',1);
 }
 
 //Страница конкретного юзера
@@ -75,7 +89,7 @@ if (isset($_GET['project']))
 //index.php?announcement=[ID]
 if (isset($_GET['announcement']))
 {
-	$sidebar = 'sidebar_project.html';
+	$sidebar = 'sidebar_announce.html';
 	$content = 'announcment_page.html';
 	$core = 'announce';
 	/*
@@ -89,7 +103,7 @@ if (isset($_GET['announcement']))
 $template = $twig->loadTemplate('index.html');
 
 //Функция которая проверит залогинен ли наш юзер
-$cabinet = $user->GetUserCabinet($_SESSION);
+$cabinet = $userContent->GetUserCabinet($_SESSION);
 
 echo $template->render(array(
 	'sidebar' => $sidebar,

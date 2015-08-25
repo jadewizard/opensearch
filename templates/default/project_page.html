@@ -1,12 +1,12 @@
 <div class="well">
   <div class="media">
     <div class="media-body">
-      <h3 class="media-heading">{{ project_array.name }}</h3>
+      <h3 class="media-heading">{{ projectContent.name }}</h3>
 
-      <p>{{ project_array.about }}</p>
+      <p>{{ projectContent.about }}</p>
       
       <p>
-        {% for tags in project_array.tags %}
+        {% for tags in projectContent.tags %}
         <a href="index.php?s=projects&tag={{ tags }}"><span class="label label-default">{{ tags }}</span></a>
         {% endfor %}
       </p>
