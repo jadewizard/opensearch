@@ -33,7 +33,7 @@ function message($input)
 
 		case '140': //Пользователь был успешно зарегистрирован!
 			return '<div class="alert alert-dismissible alert-success">
-                  Регистрация прошла успешно!
+                  Регистрация прошла успешно! Сейчас вы будете перенаправленны!
                   </div>';
 			break;
 

@@ -39,6 +39,14 @@ if (isset($_POST['send']))
 
 	        $twig->addGlobal('message', $msg);
 
+	        if ($response == 140)
+	        {
+	            //Если отвте 140, то будем ридеректить юзера
+	            //В его профиль, где отображаются настройк
+	            //О пользователе, язык общения и т.д.
+	        }
+
+
 	    } else {
 
             //Отправляем сообщение шаблонизатору
@@ -82,6 +90,8 @@ if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step'
 		         'git' => auto_clean($_POST['git']),
 		         'about' => auto_clean($_POST['about'])
 		     );
+
+		     $user->addUserInfo('asdas');
 
 	    } else {
 

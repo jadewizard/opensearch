@@ -39,4 +39,14 @@ function sql_check($id,$type)
 	    return $query;
 	}
 }
+
+function futureID()
+{
+	global $db;
+
+	$query = $db -> getRow("SELECT MAX(id) FROM os_user");
+
+	return $query['MAX(id)']+1;
+}
+
 ?>

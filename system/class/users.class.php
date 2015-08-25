@@ -105,6 +105,13 @@ class UserFunctions
         }
     }
 
+    public function addUserInfo($infoArray)
+    {
+        global $db;
+
+        $query = $db->query("INSERT INTO os_user (about,age,country,action,programm_language,language,p_url) VALUES ('$infoArray[about]','$infoArray[age]','$infoArray[country]','$infoArray[action]','$infoArray[p_language]','$infoArray[language]','$infoArray[git]')");
+    }
+
     public function logout()
     {
         unset($_SESSION['user_id']);
