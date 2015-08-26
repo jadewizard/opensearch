@@ -45,6 +45,12 @@ if (isset($_GET['page']))
 			  $content = 'registration.html';
 			break;
 
+		//Редактирование профиля
+		case 'profile':
+		      $sidebar = 'sidebar_projects.html';
+			  $content = 'profile/edit.html';
+			break;
+
 		default:
 		      $sidebar = 'sidebar_projects.html';
 			  $content = '404.html';

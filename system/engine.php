@@ -30,14 +30,14 @@ $userContent = new UserContent(); //Пользователи
 $projectContent->getAllAnnouncement(); //Объялвения
 $userContent->getAllUser(); //пользователи
 
-
+$currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
 require_once 'system/login.php'; //Вход на сайт
+require_once 'system/edit_form_validation.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
 
-$currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 ?>

@@ -116,6 +116,24 @@ class UserContent
         }
     }
 
+    public function updateUserInfo($userInfoArray)
+    {
+        global $db,$twig;
+
+        $query = $db->query("UPDATE os_user SET
+         about = '$userInfoArray[new_about]',
+         age = '$userInfoArray[new_age]',
+         country = '$userInfoArray[new_country]',
+         city = '$userInfoArray[new_city]',
+         action = '$userInfoArray[new_action]',
+         programm_language = '$userInfoArray[new_p_launguage]',
+         language = '$userInfoArray[new_launguage]',
+         p_url = '$userInfoArray[new_git]'
+          WHERE id=19");
+        
+        print_r($query);
+    }
+
 }
 
 ?>
