@@ -5,8 +5,8 @@ if (isset($_POST['loginsend']))
 {
 	if (!empty($_POST['login']) && !empty($_POST['pass']))
 	{
-		$login = auto_clean($_POST['login']);
-		$pass = auto_clean($_POST['pass']);
+		$login = $site->auto_clean($_POST['login']);
+		$pass = $site->auto_clean($_POST['pass']);
         
         //Переменная response хранит в себе ответ полученный от сервера
 		$response = $user->authorization($login,$pass);

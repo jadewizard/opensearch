@@ -71,7 +71,7 @@ class UserFunctions
 
     public function authorization($user_login,$user_pass)
     {
-        global $db;
+        global $db,$site;
         
         //Проверяем есть ли такой логин
         $query = $db->getAll("SELECT id FROM os_user WHERE login = '$user_login'");
@@ -93,7 +93,7 @@ class UserFunctions
                 $id = $query[0]['id'];
                 $_SESSION['user_id'] = $id;
                 //Делаем ридерект
-                header('Location: '.get_url());
+                header('Location: '.$site->get_url());
                 exit();
                 
             } else {
@@ -111,7 +111,49 @@ class UserFunctions
 
         $query = $db->query("UPDATE os_user SET about='$userInfoArray[about]' WHERE id=51");
     }
+    
+    //С помощью данной функции
+    //Мы получим ID текущего авторизованного
+    //пользователя
+    public function user_id($session_array)
+    {
+        global $twig;
 
+        if (count($session_array) > 0)
+        {
+            $twig->addGlobal('currentUserId',$session_array['user_id']);
+            return $session_array['user_id'];
+        }
+    }
+
+    /*
+    При помощи данной функции мы 
+    Мы определим, является ли 
+    текущий пользователь просматривающий
+    профиль какого либо пользователя
+    его обалателем.
+    */
+    public function isOwner($userId,$getId)
+    {
+        global $twig;
+
+        if ($userId == $getId)
+        {
+
+            $twig->addGlobal('isOwner',1);
+
+        } else {
+
+            $twig->addGlobal('isOwner',0);
+
+        }
+    }
+
+    /*
+    Всем и так понятная функция
+    которая помогают юзеру
+    покинуть сайт.
+    */
     public function logout()
     {
         unset($_SESSION['user_id']);

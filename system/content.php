@@ -4,8 +4,8 @@ require_once 'engine.php';
 
 if (isset($_GET['project']))
 {
-	$id = auto_clean((int) $_GET['project']);
-	$check = sql_check($id,'project');
+	$id = $site->auto_clean((int) $_GET['project']);
+	$check = $site->sql_check($id,'project');
 
 	if (count($check) > 0)
 	{
@@ -37,8 +37,8 @@ if (isset($_GET['announcement']))
 
 if (isset($_GET['user']))
 {
-	$id = auto_clean((int) $_GET['user']);
-	$check = sql_check($id,'user');
+	$id = $site->auto_clean((int) $_GET['user']);
+	$check = $site->sql_check($id,'user');
 
 	if (count($check) > 0)
 	{

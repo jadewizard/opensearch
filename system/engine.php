@@ -21,6 +21,7 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
+$site = new siteFunctions();
 $user = new UserFunctions(); //Функции юзеров
 $projectContent = new ProjectContent(); //Объявления
 $userContent = new UserContent(); //Пользователи
@@ -29,10 +30,14 @@ $userContent = new UserContent(); //Пользователи
 $projectContent->getAllAnnouncement(); //Объялвения
 $userContent->getAllUser(); //пользователи
 
+
+
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
 require_once 'system/login.php'; //Вход на сайт
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
+
+$currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 ?>

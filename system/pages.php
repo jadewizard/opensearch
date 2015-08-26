@@ -69,6 +69,14 @@ if (isset($_SESSION['user_id']))
 	$twig->addGlobal('auth',1);
 }
 
+//Определяем является ли текущий пользователь
+//Владельцем той страницы котору посещает
+//В данный момент
+if (isset($_GET['user']))
+{
+   $user->isOwner($user->user_id($_SESSION),$_GET['user']);
+}
+
 //Страница конкретного юзера
 //index.php?user=[ID]
 if (isset($_GET['user']))

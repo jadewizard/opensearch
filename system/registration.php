@@ -17,10 +17,10 @@ if (isset($_POST['send']))
             удаляет из строк "ненужные" символы
 	        Сама функция находится в файле functions.php
 	        */
-	        $login = auto_clean($_POST['login']);
+	        $login = $site->auto_clean($_POST['login']);
 	        $pass = md5(md5($_POST['pass'])); //Дважды шифруем пароль пользователя
-	        $email = auto_clean($_POST['email']);
-	        $name = auto_clean($_POST['name']);
+	        $email = $site->auto_clean($_POST['email']);
+	        $name = $site->auto_clean($_POST['name']);
 
 	        $response = $user->registration($login,$email,$pass,$name); 
 	        //В переменной response храним ответ от сервера
@@ -41,7 +41,7 @@ if (isset($_POST['send']))
 
 	        if ($response == 140)
 	        {
-	            header('Location: index.php?page=registration&step=2&token='.futureID().'');
+	            header('Location: index.php?page=registration&step=2&token='.$site->futureID().'');
 	            exit();
 	        }
 
@@ -81,13 +81,13 @@ if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step'
 	    if (!empty($_POST['action']) && !empty($_POST['p_language']) && !empty($_POST['language']))
 	    {
 	         $userInfoArray = array(
-		         'action' => auto_clean($_POST['action']),
-		         'p_language' =>  auto_clean($_POST['p_language']),
-		         'language' => auto_clean($_POST['language']),
-		         'age' => auto_clean($_POST['age']),
-		         'country' => auto_clean($_POST['country']),
-		         'git' => auto_clean($_POST['git']),
-		         'about' => auto_clean($_POST['about'])
+		         'action' => $site->auto_clean($_POST['action']),
+		         'p_language' =>  $site->auto_clean($_POST['p_language']),
+		         'language' => $site->auto_clean($_POST['language']),
+		         'age' => $site->auto_clean($_POST['age']),
+		         'country' => $site->auto_clean($_POST['country']),
+		         'git' => $site->auto_clean($_POST['git']),
+		         'about' => $site->auto_clean($_POST['about'])
 		     );
 
 		     $user->addUserInfo($userInfoArray);

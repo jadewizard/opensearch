@@ -1,3 +1,6 @@
+  {% if isOwner == 1 %}
+  <a href="index.php?project={{ announceContent.id }}" class="btn btn-success  btn-block">Редактировать профиль</a><p>
+  {% endif %}
   <div class="well">
     <img src="{{ userContent.avatar }}" width="212px" height="220px" class="img-polaroid">
   </div>
