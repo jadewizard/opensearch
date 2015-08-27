@@ -21,8 +21,8 @@ if (isset($_GET['project']))
 
 if (isset($_GET['announcement']))
 {
-	$id = auto_clean((int) $_GET['announcement']);
-	$check = sql_check($id,'announcement');
+	$id = $site->auto_clean((int) $_GET['announcement']);
+	$check = $site->sql_check($id,'announcement');
 
 	if (count($check) > 0)
 	{

@@ -132,8 +132,8 @@ class UserContent
          programm_language = '$userInfoArray[new_p_launguage]',
          language = '$userInfoArray[new_launguage]',
          p_url = '$userInfoArray[new_git]'
-          WHERE id=19");
-          
+          WHERE id='$userInfoArray[user_id]'");
+
     }
 
 }

@@ -1,20 +1,22 @@
 <?php
 
 $userInfoArray = array(
-	'new_name' => 'dsadsa',
-	'new_about' => null,
-	'new_country' => null,
+	'user_id'         => null,
+	'new_name'        => null,
+	'new_about'       => null,
+	'new_country'     => null,
 	'new_p_launguage' => null,
-	'new_launguage' => null,
-	'new_city' => null,
-	'new_action' => null,
-	'new_git' => null,
-	'new_age' => null);
+	'new_launguage'   => null,
+	'new_city'        => null,
+	'new_action'      => null,
+	'new_git'         => null,
+	'new_age'         => null);
 
 if (isset($_POST['savesend']))
 {
 
     $userInfoArray = array(
+	'user_id' =>         $_SESSION['user_id'],//ID юзера
 	'new_name' =>        $site->auto_clean($_POST['new_name']),
 	'new_about' =>       $site->auto_clean($_POST['new_about']),
 	'new_country' =>     $site->auto_clean($_POST['new_country']),
@@ -26,6 +28,6 @@ if (isset($_POST['savesend']))
 	'new_age' =>         $site->auto_clean($_POST['new_age']));
 
 	$result = $userContent->updateUserInfo($userInfoArray);
-	
+
 }
 ?>

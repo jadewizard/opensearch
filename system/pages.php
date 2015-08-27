@@ -69,7 +69,7 @@
 		{
 			$twig->addGlobal('auth',1);
 		} else {
-			$twig->addGlobal('message', message($input = array('response' => '300')));
+			$twig->addGlobal('edit_message', message($input = array('response' => '300')));
 		}
 
 		//Страница конкретного юзера
