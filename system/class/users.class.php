@@ -7,7 +7,7 @@ class UserFunctions
     public function registration($login,$email,$pass,$name)
     {
         global $db;
-        
+
         /*
         Вызываем функцию которая проверит не занят ли E-Mail и LOGIN.
         Переменная $check_response содержит в себе
@@ -22,7 +22,7 @@ class UserFunctions
             $query = $db->query("INSERT INTO os_user (login,pass,email,u_group,name) VALUES ('$login','$pass','$email','2','$name')");
 
             if ($query == true)
-            {   
+            {
                 //Если пользователь успешно зарегистрирован, то вернём число 140 для handler.php
                 return $response = 140;
             }
@@ -72,7 +72,7 @@ class UserFunctions
     public function authorization($user_login,$user_pass)
     {
         global $db,$site;
-        
+
         //Проверяем есть ли такой логин
         $query = $db->getAll("SELECT id FROM os_user WHERE login = '$user_login'");
 
@@ -82,7 +82,7 @@ class UserFunctions
             return 200; //Возвращаем ошибку, логин или пароль не верный!
 
         } else {
-            
+
             //Иначе получаем пароль и сравниваем его с введёным (из формы)
             $query = $db->getAll("SELECT id,pass FROM os_user WHERE login = '$user_login'");
 
@@ -95,7 +95,7 @@ class UserFunctions
                 //Делаем ридерект
                 header('Location: '.$site->get_url());
                 exit();
-                
+
             } else {
 
                 return 200; //Возвращаем ошибку, логин или пароль не верны
@@ -111,7 +111,7 @@ class UserFunctions
 
         $query = $db->query("UPDATE os_user SET about='$userInfoArray[about]' WHERE id=51");
     }
-    
+
     //С помощью данной функции
     //Мы получим ID текущего авторизованного
     //пользователя
@@ -127,8 +127,8 @@ class UserFunctions
     }
 
     /*
-    При помощи данной функции мы 
-    Мы определим, является ли 
+    При помощи данной функции мы
+    Мы определим, является ли
     текущий пользователь просматривающий
     профиль какого либо пользователя
     его обалателем.
@@ -145,6 +145,8 @@ class UserFunctions
         } else {
 
             $twig->addGlobal('isOwner',0);
+            //header('Location: http://localhost/index.php?user='.$userId.'');
+            //exit();
 
         }
     }

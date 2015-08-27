@@ -13,7 +13,7 @@ $userInfoArray = array(
 
 if (isset($_POST['savesend']))
 {
-     
+
     $userInfoArray = array(
 	'new_name' =>        $site->auto_clean($_POST['new_name']),
 	'new_about' =>       $site->auto_clean($_POST['new_about']),

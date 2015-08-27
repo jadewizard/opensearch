@@ -29,7 +29,7 @@ class ProjectContent
 
     /*
     * Функция для получения
-    * Массива с контеном 
+    * Массива с контеном
     * Текущего (id) объявления
     */
     public function getThisAnnouncement($id)
@@ -42,7 +42,7 @@ class ProjectContent
         // С данными о КОНКРЕТНОМ проекте из таблицы
         // os_project.
         $projectInfo = $this->getProjectInfo($this->data[0]['owner_id']);
-        
+
         //Соеденяем два массива. Исходный и полученные в рез-те
         //Работы функции getProjectInfo.
         $this->data[0] = array_merge($this->data[0],$projectInfo[0]);
@@ -92,6 +92,8 @@ class UserContent
         $this->data = $db->getAll('SELECT * FROM os_user WHERE id='.$id.'');
 
         $twig->addGlobal('userContent',$this->data[0]);
+
+        return $this->data[0];
     }
 
     /*
@@ -130,8 +132,13 @@ class UserContent
          language = '$userInfoArray[new_launguage]',
          p_url = '$userInfoArray[new_git]'
           WHERE id=19");
-        
+
         print_r($query);
+    }
+
+    public function getUserProfileInfo($id)
+    {
+        $this->data = $db->getAll('');
     }
 
 }

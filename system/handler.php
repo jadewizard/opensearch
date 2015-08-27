@@ -5,7 +5,7 @@ function message($input)
 {
 	switch ($input['response']) {
 
-	//Ошибки при регистрации и авторизации	
+	//Ошибки при регистрации и авторизации
 
 		case '100': //Пользователь с таким логином уже зарегистрирован!
 			return '<div class="alert alert-dismissible alert-danger">
@@ -18,7 +18,7 @@ function message($input)
                   Пользователь с E-MAIL '.$input['post']['email'].' уже зарегистрирован в системе!
                   </div>';
 			break;
-        
+
         case '120': //Пароль должен состоять минимум из 6-ти символов!
 			return '<div class="alert alert-dismissible alert-danger">
                   Пользователь с логином jade уже зарегистрирован в системе!
@@ -50,13 +50,21 @@ function message($input)
 			break;
 
 	//Ошибки при авторизации пользователя
-        
+
         case '200':
             //Неправельный логин или пароль
         	return 'Логин или пароль не верны!';
         	break;
 
-		
+	//Общие пользовательские ошибки
+				case '300':
+				//Авторизируйтесь
+				return '<div class="alert alert-dismissible alert-success">
+	                  Авторизируйтесь, что бы просматривать данную страницу.
+	                  </div>';
+					break;
+
+
 		default:
 			# code...
 			break;

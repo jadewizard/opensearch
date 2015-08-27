@@ -17,7 +17,7 @@ require_once 'class/users.class.php'; //Класс для работы с юзе
 require_once 'functions.php'; //Различные функции
 require_once 'class/content.class.php'; //Класс для работы с постами на сайте
 
-Twig_Autoloader::register(); 
+Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
@@ -36,7 +36,7 @@ require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
 require_once 'system/login.php'; //Вход на сайт
-require_once 'system/edit_form_validation.php';
+require_once 'system/edit.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
 

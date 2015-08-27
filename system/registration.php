@@ -22,7 +22,7 @@ if (isset($_POST['send']))
 	        $email = $site->auto_clean($_POST['email']);
 	        $name = $site->auto_clean($_POST['name']);
 
-	        $response = $user->registration($login,$email,$pass,$name); 
+	        $response = $user->registration($login,$email,$pass,$name);
 	        //В переменной response храним ответ от сервера
 
             //переменная msg хранит в себе сообщение полученное от функции errMsg.
@@ -66,7 +66,7 @@ if (isset($_GET['page']) && ($_GET['page'] == 'registration') && (isset($_GET['s
 
 if (($_GET['page'] == 'registration') && (isset($_GET['step'])) && ($_GET['step']) == '2')
 
-{   
+{
 
 	if (isset($_POST['infosend']))
 	{
