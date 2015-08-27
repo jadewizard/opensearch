@@ -1,5 +1,5 @@
   {% if isOwner == 1 %}
-  <a href="index.php?project={{ announceContent.id }}" class="btn btn-success  btn-block">Редактировать профиль</a><p>
+  <a href="index.php?user={{ userContent.id }}&act=edit" class="btn btn-success  btn-block">Редактировать профиль</a><p>
   {% endif %}
   <div class="well">
     <img src="{{ userContent.avatar }}" width="212px" height="220px" class="img-polaroid">
@@ -20,5 +20,3 @@
    <b>GitHub</b>
    <p>{{ userContent.p_url }}</p>
  </div>
-
- 

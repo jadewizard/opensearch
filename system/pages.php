@@ -77,7 +77,7 @@
 		if (isset($_GET['user']))
 		{
 
-			$user->isOwner($user->user_id($_SESSION),$_GET['user']);
+			$isOwner = $user->isOwner($user->user_id($_SESSION),$_GET['user']);
 			/*
 			Определяем является ли текущий пользователь
 			//Владельцем той страницы котору посещает
@@ -94,9 +94,14 @@
 		     if (isset($_SESSION['user_id']))
 				 {
 		         $userProfileInfo = $userContent->getThisUser($_SESSION['user_id']);
-			   }
+			       if ($isOwner == false)
+						 {
+							   header('Location: http://localhost/index.php?user='.$_SESSION['user_id'].'');
+							   exit();
+						 }
+				 }
 
-			   $sidebar = 'sidebar_projects.html';
+			   $sidebar = 'sidebar_user.html';
 			   $content = 'profile/edit.html';
 			}
 		}

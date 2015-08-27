@@ -139,14 +139,14 @@ class UserFunctions
 
         if ($userId == $getId)
         {
-
+            //Если юзер авторизован
             $twig->addGlobal('isOwner',1);
+            return true;
 
         } else {
-
+            //Иначе
             $twig->addGlobal('isOwner',0);
-            //header('Location: http://localhost/index.php?user='.$userId.'');
-            //exit();
+            return false;
 
         }
     }
