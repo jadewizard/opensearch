@@ -54,11 +54,10 @@
         <input class="form-control" name="new_git" value="{{ userProfileInfo.p_url }}" id="focusedInput" type="text">
       </div>
       <div class="form-group">
-      <input class="btn btn-success" value="Сохранить" id="focusedInput" type="submit" onclick="validate(this.form)" name="savesend">
+      <input class="btn btn-success" value="Сохранить" id="focusedInput" type="submit" name="savesend">
       </div>
     </form>
     {% endif %}
-    Вы не владелец данной страницы
     {% else %}
     {{ message|raw }}
     {% endif %}

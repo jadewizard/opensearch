@@ -25,9 +25,7 @@ if (isset($_POST['savesend']))
 	'new_git' =>         $site->auto_clean($_POST['new_git']),
 	'new_age' =>         $site->auto_clean($_POST['new_age']));
 
-	print_r($userInfoArray);
-
-	$userContent->updateUserInfo($userInfoArray);
-
+	$result = $userContent->updateUserInfo($userInfoArray);
+	
 }
 ?>

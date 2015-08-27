@@ -123,6 +123,7 @@ class UserContent
         global $db,$twig;
 
         $query = $db->query("UPDATE os_user SET
+         name = '$userInfoArray[new_name]',
          about = '$userInfoArray[new_about]',
          age = '$userInfoArray[new_age]',
          country = '$userInfoArray[new_country]',
@@ -132,13 +133,7 @@ class UserContent
          language = '$userInfoArray[new_launguage]',
          p_url = '$userInfoArray[new_git]'
           WHERE id=19");
-
-        print_r($query);
-    }
-
-    public function getUserProfileInfo($id)
-    {
-        $this->data = $db->getAll('');
+          
     }
 
 }
