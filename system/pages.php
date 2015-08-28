@@ -29,7 +29,7 @@
 			switch ($_GET['page'])
 			{
 				//Страница всех проектов
-				case 'projects':
+				case 'announcement':
 					  $sidebar = 'sidebar_projects.html';
 					  $content = 'single_announce.html';
 					break;
