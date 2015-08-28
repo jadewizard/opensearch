@@ -32,6 +32,13 @@ class ProjectContent
         $twig->addGlobal('announceContent',$this->data[0]);
     }
 
+    public function addAnnouncement($announceDataArray)
+    {
+        global $db;
+
+        $query = $db->query("INSERT INTO os_announcment (title,annoucne_text,add_date,img,owner_id,program_language,action,project_language,team,host) VALUES ('$announceDataArray[announce_name]','$announceDataArray[announce_text]','$announceDataArray[announce_date]','$announceDataArray[announce_img]','$announceDataArray[announce_owner_id]','$announceDataArray[announce_planguage]','$announceDataArray[announce_act]','$announceDataArray[announce_language]','$announceDataArray[announce_team]','$announceDataArray[announce_host]')");
+    }
+
 }
 
 class UserContent

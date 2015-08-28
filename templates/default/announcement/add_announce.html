@@ -1,0 +1,38 @@
+<div class="well">
+  <p><h3>Новое объявление</h3>
+  <form method="post">
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Заголовок объявления</label>
+      <input class="form-control" name="announce_name" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Текст объявления</label>
+      <textarea class="form-control" rows="6" name="announce_text"></textarea>
+    </div>
+    <hr>
+    <h4>Дополнительная информация</h4>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Сфера деятельности</label>
+      <input class="form-control" name="announce_act" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Язык программирования</label>
+      <input class="form-control" name="announce_planguage" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Язык общения</label>
+      <input class="form-control" name="announce_language" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Команда</label>
+      <input class="form-control" name="announce_team" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Хостинг</label>
+      <input class="form-control" name="announce_host" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+    </div>
+    <div class="form-group">
+    <input class="btn btn-success" value="Отправить на проверку" id="focusedInput" type="submit" name="addsend">
+    </div>
+  </form>
+</div>

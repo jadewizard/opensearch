@@ -46,6 +46,12 @@
 					  $content = 'registration.html';
 					break;
 
+			 //Страница регистрации
+					case 'add':
+					    $sidebar = 'sidebar_projects.html';
+						  $content = 'announcement/add_announce.html';
+						break;
+
 				default:
 				    $sidebar = 'sidebar_projects.html';
 					  $content = '404.html';
