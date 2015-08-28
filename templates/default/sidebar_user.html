@@ -1,22 +1,28 @@
-  {% if isOwner == 1 %}
-  <a href="index.php?user={{ userContent.id }}&act=edit" class="btn btn-success  btn-block">Редактировать профиль</a><p>
-  {% endif %}
-  <div class="well">
-    <img src="{{ userContent.avatar }}" width="212px" height="220px" class="img-polaroid">
-  </div>
-  <div class="well">
-   <b>Сфера деятелности</b>
-   <p>{{ userContent.action }}</p>
-   <b>Основной язык программирвоания</b>
-   <p>{{ userContent.programm_language }}</p>
-   <b>Язык общения</b>
-   <p>{{ userContent.language }}</p>
-   <b>Возраст</b>
-   <p>{{ userContent.age }} лет</p>
-   <b>Страна</b>
-   <p>{{ userContent.country }}</p>
-   <b>Город</b>
-   <p>{{ userContent.city }}</p>
-   <b>GitHub</b>
-   <p>{{ userContent.p_url }}</p>
- </div>
+    <div class="well">
+      <img src="{{ userContent.avatar }}" width="212px" height="220px" class="img-polaroid">
+    </div>
+
+    {% if isOwner == 1 %}
+    <div class="well">
+       <p><a href="index.php?user={{ userContent.id }}&act=edit" class="btn btn-success btn-sm  btn-block">Редактировать профиль</a></p>
+       <p><a href="index.php?user={{ userContent.id }}&act=edit" class="btn btn-primary btn-sm btn-block">+ Добавить проект</a>
+       <p><a href="index.php?user={{ userContent.id }}&act=edit" class="btn btn-primary btn-sm btn-block">Личные сообщения</a></p>
+    </div>
+    {% endif %}
+
+    <div class="well">
+     <b>Сфера деятелности</b>
+     <p>{{ userContent.action }}</p>
+     <b>Основной язык программирвоания</b>
+     <p>{{ userContent.programm_language }}</p>
+     <b>Язык общения</b>
+     <p>{{ userContent.language }}</p>
+     <b>Возраст</b>
+     <p>{{ userContent.age }} лет</p>
+     <b>Страна</b>
+     <p>{{ userContent.country }}</p>
+     <b>Город</b>
+     <p>{{ userContent.city }}</p>
+     <b>GitHub</b>
+     <p>{{ userContent.p_url }}</p>
+   </div>

@@ -31,7 +31,7 @@
 				//Страница всех проектов
 				case 'projects':
 					  $sidebar = 'sidebar_projects.html';
-					  $content = 'single_project.html';
+					  $content = 'single_announce.html';
 					break;
 
 		        //Страница всех людей/
@@ -59,7 +59,7 @@
 
 		} else {
 			$sidebar = 'sidebar_projects.html';
-			$content = 'single_project.html';
+			$content = 'single_announce.html';
 		}
 
 		//Если пользователь уже авторизирован
