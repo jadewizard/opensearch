@@ -12,7 +12,7 @@ $userInfoArray = array(
 	'new_git'         => null,
 	'new_age'         => null);
 
-if (isset($_POST['savesend']))
+if (isset($_POST['savesend']) && isset($_SESSION['user_id']))
 {
 
     $userInfoArray = array(
