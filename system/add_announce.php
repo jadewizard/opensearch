@@ -35,7 +35,9 @@ if (isset($_POST['addsend']))
       'owner_id'           => $_SESSION['user_id']
      );
 
-    $projectContent->addAnnouncement($announceDataArray);
+    $response = $projectContent->addAnnouncement($announceDataArray);
+
+    echo $response;
 
   } else {
     $twig->addGlobal('addMessage', message(array('response' => 400)));

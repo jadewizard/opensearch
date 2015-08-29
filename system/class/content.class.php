@@ -34,7 +34,7 @@ class ProjectContent
 
     public function addAnnouncement($announceDataArray)
     {
-        global $db;
+        global $db,$site;
 
         $query = $db->query("INSERT INTO
          os_announcment 
@@ -54,6 +54,12 @@ class ProjectContent
             '$announceDataArray[announce_language]',
             '$announceDataArray[announce_team]',
             '$announceDataArray[announce_host]')");
+
+        if ($query == 1)
+        {
+            return 410;
+            header('Location: /index.php?announcement='.$site->futureID('annoucne').'');
+        }
     }
 
 }

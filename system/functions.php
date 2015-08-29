@@ -43,13 +43,24 @@ class siteFunctions
 		}
 	}
 
-	public function futureID()
+	public function futureID($type)
 	{
 		global $db;
+        
+        if ($type == 'user') 
+        {
+			$query = $db -> getRow("SELECT MAX(id) FROM os_user");
 
-		$query = $db -> getRow("SELECT MAX(id) FROM os_user");
+			return $query['MAX(id)']+1;
+        }
 
-		return $query['MAX(id)']+1;
+        if ($type = 'announce')
+        {
+			$query = $db -> getRow("SELECT MAX(id) FROM os_announcment");
+           
+			return $query['MAX(id)'];
+        }
+
 	}
 }
 

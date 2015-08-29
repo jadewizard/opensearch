@@ -154,5 +154,7 @@
 
 		    $loader = new Twig_Loader_String();
 
+		    echo $site->futureID('annoucne');
+
 
 		?>

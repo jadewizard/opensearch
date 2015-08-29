@@ -87,6 +87,13 @@ function message($input)
 					</div>';
 		    break;
 
+        case '410':
+		    // Заполните все поля!
+		    return '<div class="alert alert-dismissible alert-danger">
+					Объявление отправленно на одобрение модератором.
+					</div>';
+		    break;
+
 	}
 }
 
