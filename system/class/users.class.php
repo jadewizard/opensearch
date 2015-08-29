@@ -69,7 +69,7 @@ class UserFunctions
         }
     }
 
-    public function authorization($user_login,$user_pass)
+    public function authorization($user_login,$user_pass,$type)
     {
         global $db,$site;
 
@@ -92,9 +92,18 @@ class UserFunctions
             {
                 $id = $query[0]['id'];
                 $_SESSION['user_id'] = $id;
+
                 //Делаем ридерект
-                //header('Location: '.$site->get_url());
-                //exit();
+                if ($type == 'auth')
+                {
+                    /*
+                    Если функция вызывается при авторизации
+                    То делаем редирект на текущею страницу
+                    Если функция вызывается при регистрации, то ничего.
+                    */
+                    header('Location: '.$site->get_url());
+                    exit();
+                }
 
             } else {
 

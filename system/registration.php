@@ -41,7 +41,7 @@ if (isset($_POST['send']))
 
 	        if ($response == 140)
 	        {
-	        	$user->authorization($login,$pass);
+	        	$user->authorization($login,$pass,'reg');
 	            header('Location: index.php?user='.$_SESSION['user_id'].'&act=edit');
 	            exit();
 	        }

@@ -9,7 +9,7 @@ if (isset($_POST['loginsend']))
 		$pass = md5(md5($site->auto_clean($_POST['pass'])));
         
         //Переменная response хранит в себе ответ полученный от сервера
-		$response = $user->authorization($login,$pass);
+		$response = $user->authorization($login,$pass,'auth');
         
         //Обрабатывае сообшение
         $msg = message($input = array(
