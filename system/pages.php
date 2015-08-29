@@ -20,6 +20,7 @@
 		Переменная core служит для передачи
 		каких либо параметров шаблонизатору.
 		*/
+		echo ('index.php?user='.$site->futureID().'act=edit');
 		$core = null;
 
 		$auth = null;

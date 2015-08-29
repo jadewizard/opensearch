@@ -41,7 +41,8 @@ if (isset($_POST['send']))
 
 	        if ($response == 140)
 	        {
-	            header('Location: index.php?page=registration&step=2&token='.$site->futureID().'');
+	        	$user->authorization($login,$pass);
+	            header('Location: index.php?user='.$_SESSION['user_id'].'&act=edit');
 	            exit();
 	        }
 

@@ -88,13 +88,13 @@ class UserFunctions
 
             $pass = $query[0]['pass'];
 
-            if ($pass === md5(md5($user_pass)))
+            if ($pass == $user_pass)
             {
                 $id = $query[0]['id'];
                 $_SESSION['user_id'] = $id;
                 //Делаем ридерект
-                header('Location: '.$site->get_url());
-                exit();
+                //header('Location: '.$site->get_url());
+                //exit();
 
             } else {
 
