@@ -5,7 +5,7 @@ function message($input)
 {
 	switch ($input['response']) {
 
-	//Ошибки при регистрации и авторизации
+// Ошибки при регистрации и авторизации
 
 		case '100': //Пользователь с таким логином уже зарегистрирован!
 			return '<div class="alert alert-dismissible alert-danger">
@@ -49,14 +49,14 @@ function message($input)
                   </div>';
 			break;
 
-	//Ошибки при авторизации пользователя
+// Ошибки при авторизации пользователя
 
         case '200':
             //Неправельный логин или пароль
         	return 'Логин или пароль не верны!';
         	break;
 
-	// Общие пользовательские ошибки
+// Общие пользовательские ошибки
 		case '300':
 				// Авторизируйтесь
 		    return '<div class="alert alert-dismissible alert-success">
@@ -75,6 +75,15 @@ function message($input)
 		    // Данные о пользователе НЕ обновлены
 		    return '<div class="alert alert-dismissible alert-danger">
 					Ошибка.
+					</div>';
+		    break;
+ 
+ // Ошибки связанные с добавлением объявления!
+
+		case '400':
+		    // Заполните все поля!
+		    return '<div class="alert alert-dismissible alert-danger">
+					Нужно заполнить все поля!
 					</div>';
 		    break;
 

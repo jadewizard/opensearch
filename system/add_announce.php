@@ -14,18 +14,33 @@ $announceDataArray = array(
 
 if (isset($_POST['addsend']))
 {
-  $announceDataArray = array(
-    'announce_name'      => $site->auto_clean($_POST['announce_name']),
-    'announce_text'      => $site->auto_clean($_POST['announce_text']),
-    'announce_act'       => $site->auto_clean($_POST['announce_act']),
-    'announce_planguage' => $site->auto_clean($_POST['announce_planguage']),
-    'announce_language'  => $site->auto_clean($_POST['announce_language']),
-    'announce-date'      => date('Y-m-d'),
-    'announce_team'      => $site->auto_clean($_POST['announce_team']),
-    'announce_host'      => $site->auto_clean($_POST['announce_host']),
-    'owner_id'           => $_SESSION['user_id']);
+
+  if (!empty($_POST['announce_name']) &&
+  !empty($_POST['announce_text']) &&
+  !empty($_POST['announce_language']) &&
+  !empty($_POST['announce_act']) &&
+  !empty($_POST['announce_planguage']) &&
+  !empty($_POST['announce_team']) &&
+  !empty($_POST['announce_host']))
+  {
+     $announceDataArray = array(
+      'announce_name'      => $site->auto_clean($_POST['announce_name']),
+      'announce_text'      => $site->auto_clean($_POST['announce_text']),
+      'announce_act'       => $site->auto_clean($_POST['announce_act']),
+      'announce_planguage' => $site->auto_clean($_POST['announce_planguage']),
+      'announce_language'  => $site->auto_clean($_POST['announce_language']),
+      'announce-date'      => date('Y-m-d'),
+      'announce_team'      => $site->auto_clean($_POST['announce_team']),
+      'announce_host'      => $site->auto_clean($_POST['announce_host']),
+      'owner_id'           => $_SESSION['user_id']
+     );
 
     $projectContent->addAnnouncement($announceDataArray);
+
+  } else {
+    $twig->addGlobal('addMessage', message(array('response' => 400)));
+  }
+
 }
 
 ?>
