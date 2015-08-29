@@ -29,5 +29,8 @@ if (isset($_POST['savesend']) && isset($_SESSION['user_id']))
 
 	$result = $userContent->updateUserInfo($userInfoArray);
 
+	$response_msg = message(array('response' => $result)); //Обрабатываем ответ
+	$twig->addGlobal('updMessage',$response_msg);
+
 }
 ?>

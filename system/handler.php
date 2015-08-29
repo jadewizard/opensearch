@@ -56,18 +56,28 @@ function message($input)
         	return 'Логин или пароль не верны!';
         	break;
 
-	//Общие пользовательские ошибки
-				case '300':
-				//Авторизируйтесь
-				return '<div class="alert alert-dismissible alert-success">
-	                  Авторизируйтесь, что бы просматривать данную страницу.
-	                  </div>';
-					break;
-
-
-		default:
-			# code...
+	// Общие пользовательские ошибки
+		case '300':
+				// Авторизируйтесь
+		    return '<div class="alert alert-dismissible alert-success">
+	                Авторизируйтесь, что бы просматривать данную страницу.
+	                </div>';
 			break;
+
+		case '310':
+			// Данные о пользователе успешно обновлены
+		    return '<div class="alert alert-dismissible alert-success">
+					Данные успешно обнолвенны.
+					</div>';
+		    break;
+
+		case '320':
+		    // Данные о пользователе НЕ обновлены
+		    return '<div class="alert alert-dismissible alert-danger">
+					Ошибка.
+					</div>';
+		    break;
+
 	}
 }
 

@@ -7,7 +7,7 @@ $announceDataArray = array(
   'announce_planguage' => null,
   'announce_language'  => null,
   'announce_team'      => null,
-  'announce_date'      => date("m.d.y"),
+  'announce_date'      => null,
   'announce_img'       => null,
   'announce_host'      => null,
   'owner_id'           => null);
@@ -20,6 +20,7 @@ if (isset($_POST['addsend']))
     'announce_act'       => $site->auto_clean($_POST['announce_act']),
     'announce_planguage' => $site->auto_clean($_POST['announce_planguage']),
     'announce_language'  => $site->auto_clean($_POST['announce_language']),
+    'announce-date'      => date('Y-m-d'),
     'announce_team'      => $site->auto_clean($_POST['announce_team']),
     'announce_host'      => $site->auto_clean($_POST['announce_host']),
     'owner_id'           => $_SESSION['user_id']);

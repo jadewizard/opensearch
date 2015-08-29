@@ -16,12 +16,13 @@
 
 		require_once 'engine.php';
 
-
-		$core = null;
 		/*
 		Переменная core служит для передачи
 		каких либо параметров шаблонизатору.
 		*/
+		$core = null;
+
+		$auth = null;
 		$userProfileInfo = null;
 
 		if (isset($_GET['page']))
@@ -46,12 +47,6 @@
 					  $content = 'registration.html';
 					break;
 
-			 //Страница регистрации
-					case 'add':
-					    $sidebar = 'sidebar_projects.html';
-						  $content = 'announcement/add_announce.html';
-						break;
-
 				default:
 				    $sidebar = 'sidebar_projects.html';
 					  $content = '404.html';
@@ -73,9 +68,10 @@
 		//Что бы запретить показ страницы регистрации.
 		if (isset($_SESSION['user_id']))
 		{
-			$twig->addGlobal('auth',1);
+			$twig->addGlobal('auth',true);
+			$auth = true;
 		} else {
-			$twig->addGlobal('edit_message', message($input = array('response' => '300')));
+			$twig->addGlobal('auth_message', message($input = array('response' => '300')));
 		}
 
 		//Страница конкретного юзера
@@ -94,29 +90,39 @@
 			$sidebar = 'sidebar_user.html';
 			$content = 'user_page.html';
 
-			if (isset($_GET['act']) && $_GET['act'] == 'edit')
-			{
+		   if (isset($_GET['act']) && $_GET['act'] == 'edit')
+			 {
 
-		     if (isset($_SESSION['user_id']))
-				 {
-		         $userProfileInfo = $userContent->getThisUser($_SESSION['user_id']);
-			       if ($isOwner == false)
-						 {
-							   header('Location: http://localhost/index.php?user='.$_SESSION['user_id'].'');
-							   exit();
-						 }
-				 }
+				if ($auth == true)
+				{
+					//Если пользователь авторизирован
+					$userProfileInfo = $userContent->getThisUser($_SESSION['user_id']);
 
-			   $sidebar = 'sidebar_user.html';
-			   $content = 'profile/edit.html';
-			}
-		}
-		//Страница конкретного проекта
-		//index.php?project=[ID]
-		if (isset($_GET['project']))
-		{
-			$sidebar = 'sidebar_project.html';
-			$content = 'project_page.html';
+					if ($isOwner == false)
+					{
+					    // Если пользователь не владелец текущего ID
+						header('Location: http://localhost/index.php?user='.$_SESSION['user_id'].'');
+						exit();
+					}
+
+			    }
+
+                $sidebar = 'sidebar_user.html';
+                $content = 'profile/edit.html';
+
+			} elseif (isset($_GET['act']) && $_GET['act'] == 'add') {
+
+			 	if ($isOwner == false)
+			    {     
+				    // Если пользователь не владелец текущего ID
+				    header('Location: http://localhost/index.php?user='.$_SESSION['user_id'].'&act=add');
+				    exit();
+				}
+
+				$sidebar = 'sidebar_user.html';
+				$content = 'announcement/add_announce.html';
+
+			 }
 		}
 
 		//Страница конкретного анонса

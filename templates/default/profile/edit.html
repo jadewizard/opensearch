@@ -1,6 +1,6 @@
   <div class="well">
-    {% if auth == 1 %}
-     {% if isOwner == 1 %}
+    {% if auth == true %}
+        {{ updMessage|raw }}
     <h3>Основная информация</h3>
     <form method="post">
       <div class="form-group">
@@ -57,8 +57,6 @@
       <input class="btn btn-success" value="Сохранить" id="focusedInput" type="submit" name="savesend">
       </div>
     </form>
-    {% endif %}
-    {% else %}
-    {{ edit_message|raw }}
-    {% endif %}
+        {% endif %}
+    {{ auth_message|raw }}
   </div>

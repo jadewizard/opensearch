@@ -36,7 +36,7 @@ class ProjectContent
     {
         global $db;
 
-        $query = $db->query("INSERT INTO os_announcment (title,annoucne_text,add_date,img,owner_id,program_language,action,project_language,team,host) VALUES ('$announceDataArray[announce_name]','$announceDataArray[announce_text]','$announceDataArray[announce_date]','$announceDataArray[announce_img]','$announceDataArray[announce_owner_id]','$announceDataArray[announce_planguage]','$announceDataArray[announce_act]','$announceDataArray[announce_language]','$announceDataArray[announce_team]','$announceDataArray[announce_host]')");
+        $query = $db->query("INSERT INTO os_announcment (title,annoucne_text,img,owner_id,program_language,action,project_language,team,host) VALUES ('$announceDataArray[announce_name]','$announceDataArray[announce_text]','$announceDataArray[announce_img]','$announceDataArray[announce_owner_id]','$announceDataArray[announce_planguage]','$announceDataArray[announce_act]','$announceDataArray[announce_language]','$announceDataArray[announce_team]','$announceDataArray[announce_host]')");
     }
 
 }
@@ -102,6 +102,15 @@ class UserContent
          language = '$userInfoArray[new_launguage]',
          p_url = '$userInfoArray[new_git]'
           WHERE id='$userInfoArray[user_id]'");
+
+          if ($query == 1)
+          {
+              return 310;
+              //Данные обновленны
+          } else {
+              return 320;
+              //Данные не обновленны
+          }
 
     }
 
