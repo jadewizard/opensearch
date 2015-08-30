@@ -73,8 +73,27 @@ class UserContent
         global $db,$twig;
 
         $this->data = $db->getAll('SELECT * FROM os_user');
+        
+        for ($i = 0;$i < count($this->data);$i++)
+        {
+           $input_array = array_values($this->data[$i]); //Значения
+           $input_array_keys = array_keys($this->data[$i]); //Ключи
 
-        $twig->addGlobal('allUser',$this->data);
+           for ($a = 0;$a < count($input_array);$a++)
+           {
+              if (empty($input_array[$a]))
+              {
+                $input_array[$a] = 'Не указанно';
+              }
+              //break;
+           }
+
+           $output_array[$i] = array_combine($input_array_keys, $input_array);
+
+        }
+
+        $twig->addGlobal('allUserContent',$output_array);
+
     }
 
     public function getThisUser($id)
@@ -82,9 +101,24 @@ class UserContent
         global $db,$twig;
 
         $this->data = $db->getAll('SELECT * FROM os_user WHERE id='.$id.'');
+        
+        $input_array_keys = array_keys($this->data[0]); //Ключи
+        $input_array = array_values($this->data[0]); //Значения
+        
+        for ($i = 0;$i < count($input_array);$i++)
+        {
 
+           if (empty($input_array[$i]))
+           {
+              $input_array[$i] = 'Не указанно';
+           }
+
+        }
+
+        $output_array = array_combine($input_array_keys, $input_array);
+        
         $twig->addGlobal('userContent',$this->data[0]);
-
+        $twig->addGlobal('unknowContent',$output_array);
         return $this->data[0];
     }
 

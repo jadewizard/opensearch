@@ -37,8 +37,6 @@ if (isset($_POST['addsend']))
 
     $response = $projectContent->addAnnouncement($announceDataArray);
 
-    echo $response;
-
   } else {
     $twig->addGlobal('addMessage', message(array('response' => 400)));
   }
