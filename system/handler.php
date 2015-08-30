@@ -83,7 +83,7 @@ function message($input)
 		case '400':
 		    // Заполните все поля!
 		    return '<div class="alert alert-dismissible alert-danger">
-					Нужно заполнить все поля!
+					Заполните поля отмеченные звёздочкой (*)
 					</div>';
 		    break;
 
