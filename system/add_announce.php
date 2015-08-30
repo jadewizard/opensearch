@@ -16,12 +16,8 @@ if (isset($_POST['addsend']))
 {
 
   if (!empty($_POST['announce_name']) &&
-  !empty($_POST['announce_text']) &&
-  !empty($_POST['announce_language']) &&
-  !empty($_POST['announce_act']) &&
-  !empty($_POST['announce_planguage']) &&
-  !empty($_POST['announce_team']) &&
-  !empty($_POST['announce_host']))
+      !empty($_POST['announce_text']) &&
+      !empty($_POST['announce_language']))
   {
      $announceDataArray = array(
       'announce_name'      => $site->auto_clean($_POST['announce_name']),

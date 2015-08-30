@@ -15,7 +15,25 @@ class ProjectContent
 
         $this->data = $db->getAll('SELECT * FROM os_announcment');
 
-        $twig->addGlobal('announceAll',$this->data);
+        for ($i = 0;$i < count($this->data);$i++)
+        {
+           $input_array = array_values($this->data[$i]); //Значения
+           $input_array_keys = array_keys($this->data[$i]); //Ключи
+
+           for ($a = 0;$a < count($input_array);$a++)
+           {
+              if (empty($input_array[$a]))
+              {
+                $input_array[$a] = 'Не указанно';
+              }
+              //break;
+           }
+
+           $output_array[$i] = array_combine($input_array_keys, $input_array);
+
+        }
+
+        $twig->addGlobal('announceAll',$output_array);
     }
 
     /*
@@ -29,7 +47,23 @@ class ProjectContent
 
         $this->data = $db->getAll('SELECT * FROM os_announcment WHERE id='.$id.'');
 
-        $twig->addGlobal('announceContent',$this->data[0]);
+        $input_array_keys = array_keys($this->data[0]); //Ключи
+        $input_array = array_values($this->data[0]); //Значения
+        
+        for ($i = 0;$i < count($input_array);$i++)
+        {
+
+           if (empty($input_array[$i]))
+           {
+              $input_array[$i] = 'Не указанно';
+           }
+
+        }
+
+        $output_array = array_combine($input_array_keys, $input_array);
+
+        $twig->addGlobal('announceContent',$output_array);
+        return $this->data[0];
     }
 
     public function addAnnouncement($announceDataArray)
@@ -117,8 +151,7 @@ class UserContent
 
         $output_array = array_combine($input_array_keys, $input_array);
         
-        $twig->addGlobal('userContent',$this->data[0]);
-        $twig->addGlobal('unknowContent',$output_array);
+        $twig->addGlobal('userContent',$output_array);
         return $this->data[0];
     }
 
