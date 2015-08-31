@@ -10,7 +10,8 @@ $userInfoArray = array(
 	'new_city'        => null,
 	'new_action'      => null,
 	'new_git'         => null,
-	'new_age'         => null);
+	'new_age'         => null,
+	'avatar'         => null);
 
 if (isset($_POST['savesend']) && isset($_SESSION['user_id']))
 {
@@ -25,7 +26,8 @@ if (isset($_POST['savesend']) && isset($_SESSION['user_id']))
 	'new_city' =>        $site->auto_clean($_POST['new_city']),
 	'new_action' =>      $site->auto_clean($_POST['new_action']),
 	'new_git' =>         $site->auto_clean($_POST['new_git']),
-	'new_age' =>         $site->auto_clean($_POST['new_age']));
+	'new_age' =>         $site->auto_clean($_POST['new_age']),
+	'avatar' =>          $site->auto_clean($_POST['avatar_url']));
 
 	$result = $userContent->updateUserInfo($userInfoArray);
 

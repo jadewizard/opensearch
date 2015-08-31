@@ -16,9 +16,9 @@ class UserFunctions
 
         $check_response = $this->UserCheck($login,$email);
 
-    	if ($check_response != 100 && $check_response != 110)
-    	{
-    		//Добавляем пользователя в БД
+        if ($check_response != 100 && $check_response != 110)
+        {
+            //Добавляем пользователя в БД
             $query = $db->query("INSERT INTO os_user (login,pass,email,u_group,name) VALUES ('$login','$pass','$email','2','$name')");
 
             if ($query == true)
@@ -27,11 +27,11 @@ class UserFunctions
                 return $response = 140;
             }
 
-    	} else {
+        } else {
 
             return $response = $check_response;
 
-    	}
+        }
 
     }
 
@@ -46,15 +46,15 @@ class UserFunctions
           105 - емали занят.
         */
 
-        global $db;
+          global $db;
 
         //Проверяем логин на занятость
-        $query = $db->getAll("SELECT id FROM os_user WHERE login = '$login'");
+          $query = $db->getAll("SELECT id FROM os_user WHERE login = '$login'");
 
-        if (count($query) > 0)
-        {
+          if (count($query) > 0)
+          {
 
-            return 100; //Возврашаем код ошибки, которая гласит о том, что логин занят
+               return 100; //Возврашаем код ошибки, которая гласит о том, что логин занят
 
         } else {
 

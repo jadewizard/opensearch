@@ -46,20 +46,20 @@ class siteFunctions
 	public function futureID($type)
 	{
 		global $db;
-        
-        if ($type == 'user') 
-        {
+		
+		if ($type == 'user') 
+		{
 			$query = $db -> getRow("SELECT MAX(id) FROM os_user");
 
 			return $query['MAX(id)']+1;
-        }
+		}
 
-        if ($type = 'announce')
-        {
+		if ($type = 'announce')
+		{
 			$query = $db -> getRow("SELECT MAX(id) FROM os_announcment");
-           
+			
 			return $query['MAX(id)'];
-        }
+		}
 
 	}
 }

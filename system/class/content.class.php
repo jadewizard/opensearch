@@ -179,7 +179,7 @@ class UserContent
 
     public function updateUserInfo($userInfoArray)
     {
-        global $db,$twig;
+     global $db,$twig;
 
         $query = $db->query("UPDATE os_user SET
          name = '$userInfoArray[new_name]',
@@ -190,7 +190,8 @@ class UserContent
          action = '$userInfoArray[new_action]',
          programm_language = '$userInfoArray[new_p_launguage]',
          language = '$userInfoArray[new_launguage]',
-         p_url = '$userInfoArray[new_git]'
+         p_url = '$userInfoArray[new_git]',
+         avatar = '$userInfoArray[avatar]'
           WHERE id='$userInfoArray[user_id]'");
 
           if ($query == 1)
