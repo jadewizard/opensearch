@@ -1,75 +1,72 @@
 <?php
-
 class ProjectContent
 {
     public $data;
-
     /*
-    * Функция для получения
-    * Массива ВСЕХ объявлений
-    * Из БД.
+     * Функция для получения
+     * Массива ВСЕХ объявлений
+     * Из БД.
     */
-    public function getAllAnnouncement()
+    public function getAllAnnouncement() 
     {
-        global $db,$twig;
-
+        global $db, $twig;
+        
         $this->data = $db->getAll('SELECT * FROM os_announcment');
-
-        for ($i = 0;$i < count($this->data);$i++)
+        
+        for ($i = 0; $i < count($this->data); $i++) 
         {
-           $input_array = array_values($this->data[$i]); //Значения
-           $input_array_keys = array_keys($this->data[$i]); //Ключи
-
-           for ($a = 0;$a < count($input_array);$a++)
-           {
-              if (empty($input_array[$a]))
-              {
-                $input_array[$a] = 'Не указанно';
-              }
-              //break;
-           }
-
-           $output_array[$i] = array_combine($input_array_keys, $input_array);
-
+            $input_array = array_values($this->data[$i]); //Значения
+            $input_array_keys = array_keys($this->data[$i]); //Ключи
+            
+            for ($a = 0; $a < count($input_array); $a++) 
+            {
+                if (empty($input_array[$a])) 
+                {
+                    $input_array[$a] = 'Не указанно';
+                }
+                //break;
+                
+                
+            }
+            
+            $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
-
-        $twig->addGlobal('announceAll',$output_array);
+        
+        $twig->addGlobal('announceAll', $output_array);
     }
-
     /*
-    * Функция для получения
-    * Массива с контеном
-    * Текущего (id) объявления
+     * Функция для получения
+     * Массива с контеном
+     * Текущего (id) объявления
     */
-    public function getThisAnnouncement($id)
+    public function getThisAnnouncement($id) 
     {
-        global $db,$twig;
-
-        $this->data = $db->getAll('SELECT * FROM os_announcment WHERE id='.$id.'');
-
+        global $db, $twig;
+        
+        $this->data = $db->getAll('SELECT * FROM os_announcment WHERE id=' . $id . '');
+        
         $input_array_keys = array_keys($this->data[0]); //Ключи
         $input_array = array_values($this->data[0]); //Значения
         
-        for ($i = 0;$i < count($input_array);$i++)
+        for ($i = 0; $i < count($input_array); $i++) 
         {
-
-           if (empty($input_array[$i]))
-           {
-              $input_array[$i] = 'Не указанно';
-           }
-
+            
+            if (empty($input_array[$i])) 
+            {
+                $input_array[$i] = 'Не указанно';
+            }
         }
-
+        
         $output_array = array_combine($input_array_keys, $input_array);
-
-        $twig->addGlobal('announceContent',$output_array);
+        
+        $twig->addGlobal('announceContent', $output_array);
         return $this->data[0];
     }
-
-    public function addAnnouncement($announceDataArray)
+    
+    public function addAnnouncement($announceDataArray) 
     {
-        global $db,$site;
-
+        global $db, $site;
+        
         $query = $db->query("INSERT INTO
          os_announcment 
          (title,
@@ -88,99 +85,101 @@ class ProjectContent
             '$announceDataArray[announce_language]',
             '$announceDataArray[announce_team]',
             '$announceDataArray[announce_host]')");
-
-        if ($query == 1)
+        
+        if ($query == 1) 
         {
             return 410;
-            header('Location: /index.php?announcement='.$site->futureID('annoucne').'');
+            header('Location: /index.php?announcement=' . $site->futureID('annoucne') . '');
         }
     }
-
 }
 
 class UserContent
 {
     public $data;
-
-    public function getAllUser()
+    
+    public function getAllUser() 
     {
-        global $db,$twig;
-
+        global $db, $twig;
+        
         $this->data = $db->getAll('SELECT * FROM os_user');
         
-        for ($i = 0;$i < count($this->data);$i++)
+        for ($i = 0; $i < count($this->data); $i++) 
         {
-           $input_array = array_values($this->data[$i]); //Значения
-           $input_array_keys = array_keys($this->data[$i]); //Ключи
-
-           for ($a = 0;$a < count($input_array);$a++)
-           {
-              if (empty($input_array[$a]))
-              {
-                $input_array[$a] = 'Не указанно';
-              }
-              //break;
-           }
-
-           $output_array[$i] = array_combine($input_array_keys, $input_array);
-
+            $input_array = array_values($this->data[$i]); //Значения
+            $input_array_keys = array_keys($this->data[$i]); //Ключи
+            
+            for ($a = 0; $a < count($input_array); $a++) 
+            {
+                if (empty($input_array[$a])) 
+                {
+                    $input_array[$a] = 'Не указанно';
+                }
+                //break;
+                
+                
+            }
+            
+            $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
-
-        $twig->addGlobal('allUserContent',$output_array);
-
+        
+        $twig->addGlobal('allUserContent', $output_array);
     }
-
-    public function getThisUser($id)
+    
+    public function getThisUser($id) 
     {
-        global $db,$twig;
-
-        $this->data = $db->getAll('SELECT * FROM os_user WHERE id='.$id.'');
+        global $db, $twig;
+        
+        $this->data = $db->getAll('SELECT * FROM os_user WHERE id=' . $id . '');
         
         $input_array_keys = array_keys($this->data[0]); //Ключи
         $input_array = array_values($this->data[0]); //Значения
         
-        for ($i = 0;$i < count($input_array);$i++)
+        for ($i = 0; $i < count($input_array); $i++) 
         {
-
-           if (empty($input_array[$i]))
-           {
-              $input_array[$i] = 'Не указанно';
-           }
-
+            
+            if (empty($input_array[$i])) 
+            {
+                $input_array[$i] = 'Не указанно';
+            }
         }
-
+        
         $output_array = array_combine($input_array_keys, $input_array);
         
-        $twig->addGlobal('userContent',$output_array);
+        $twig->addGlobal('userContent', $output_array);
         return $this->data[0];
     }
-
     /*
     Функция которая проверяте
     Залогинен ли юзер и возвращает
     шаблон который нужно показать.
     */
-    public function GetUserCabinet($data)
+    public function GetUserCabinet($data) 
     {
-
-        if (!empty($data['user_id']))
+        
+        if (!empty($data['user_id'])) 
         {
-
+            
             return 'cabinet.html';
             //Если есть user_id, то выводим кабинет
-
-        } else {
-
+            
+            
+        } 
+        else
+        {
+            
             return 'login.html';
             //Иначе форму логина
-
+            
+            
         }
     }
-
-    public function updateUserInfo($userInfoArray)
+    
+    public function updateUserInfo($userInfoArray) 
     {
-     global $db,$twig;
-
+        
+        global $db, $twig;
+        
         $query = $db->query("UPDATE os_user SET
          name = '$userInfoArray[new_name]',
          about = '$userInfoArray[new_about]',
@@ -193,18 +192,21 @@ class UserContent
          p_url = '$userInfoArray[new_git]',
          avatar = '$userInfoArray[avatar]'
           WHERE id='$userInfoArray[user_id]'");
-
-          if ($query == 1)
-          {
-              return 310;
-              //Данные обновленны
-          } else {
-              return 320;
-              //Данные не обновленны
-          }
-
+        
+        if ($query == 1) 
+        {
+            return 310;
+            //Данные обновленны
+            
+            
+        } 
+        else
+        {
+            return 320;
+            //Данные не обновленны
+            
+            
+        }
     }
-
 }
-
 ?>
