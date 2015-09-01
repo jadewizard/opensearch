@@ -1,5 +1,4 @@
 <?php
-
 /*
 Файл в котором подключаются все системные файлы
 Данные файл подключается к другим файлам
@@ -10,7 +9,7 @@ session_start();
 
 include 'class/safemysql.class.php'; //Класс для работы с БД
 
-$db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima','db' => 'db', 'charset' => 'utf8'));
+$db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima', 'db' => 'db', 'charset' => 'utf8'));
 
 require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте

@@ -2,7 +2,7 @@
     {% if auth == true %}
         {{ updMessage|raw }}
     <h3>Основная информация</h3>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label class="control-label" for="focusedInput">Имя</label>
         <input class="form-control" name="new_name" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
@@ -54,8 +54,8 @@
         <input class="form-control" name="new_git" value="{{ userProfileInfo.p_url }}" id="focusedInput" type="text">
       </div>
       <div class="form-group">
-        <label class="control-label" for="focusedInput">Аватар (URL)</label>
-        <input class="form-control" name="avatar_url" id="focusedInput" value="{{ userProfileInfo.avatar }}" type="text">
+        <label class="control-label" for="focusedInput">Аватар</label>
+        <input name="avatar" type="file">
       </div>
       <div class="form-group">
       <input class="btn btn-success" value="Сохранить" id="focusedInput" type="submit" name="savesend">
