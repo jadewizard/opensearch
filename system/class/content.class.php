@@ -111,12 +111,12 @@ class UserContent
             
             for ($a = 0; $a < count($input_array); $a++) 
             {
+              
                 if (empty($input_array[$a])) 
                 {
                     $input_array[$a] = 'Не указанно';
                 }
                 //break;
-                
                 
             }
             
@@ -142,6 +142,7 @@ class UserContent
             {
                 $input_array[$i] = 'Не указанно';
             }
+
         }
         
         $output_array = array_combine($input_array_keys, $input_array);
@@ -163,14 +164,12 @@ class UserContent
             return 'cabinet.html';
             //Если есть user_id, то выводим кабинет
             
-            
         } 
         else
         {
             
             return 'login.html';
             //Иначе форму логина
-            
             
         }
     }
@@ -195,16 +194,16 @@ class UserContent
         
         if ($query == 1) 
         {
+
             return 310;
             //Данные обновленны
-            
             
         } 
         else
         {
+
             return 320;
             //Данные не обновленны
-            
             
         }
     }
