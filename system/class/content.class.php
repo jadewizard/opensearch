@@ -26,13 +26,11 @@ class ProjectContent
                     $input_array[$a] = 'Не указанно';
                 }
                 //break;
-                
-                
             }
             
             $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
-        
+
         $twig->addGlobal('announceAll', $output_array);
     }
     /*
@@ -118,8 +116,6 @@ class UserContent
                     $input_array[$a] = 'Не указанно';
                 }
                 //break;
-                
-                
             }
             
             $output_array[$i] = array_combine($input_array_keys, $input_array);
@@ -231,6 +227,15 @@ class UserContent
                   }
              } 
         }
+    }
+
+    public function getAnnounceCurrentUser($id)
+    {
+        global $db,$twig;
+
+        $query = $db->getAll("SELECT * FROM os_announcment WHERE owner_id='$id'");
+
+        $twig->addGlobal('currentUserAnnounce',$query);
     }
     
 }
