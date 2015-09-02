@@ -177,15 +177,19 @@ class UserContent
 
         if ($_FILES['avatar']['error'] == 0)
         {
-          var_dump($_FILES['avatar']);
              if ($_FILES['avatar']['size'] <> 25000000)
              {
                   if ($_FILES['avatar']['type'] == "image/jpeg" ||
                       $_FILES['avatar']['type'] == "image/png"  ||
                       $_FILES['avatar']['type'] == "image/jpg" )
                   {
-                       $response = move_uploaded_file($_FILES['avatar']['name'], '../users/avatars/'.$_FILES['avatar']['name']);
-                       var_dump($response);
+                       $extension = explode('.', $_FILES['avatar']['name']); //Копируем расширение файла
+                       $response = move_uploaded_file($_FILES['avatar']['tmp_name'], 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1]);
+                       
+                       if ($response = true)
+                       {
+                            $avatarPath = 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1];
+                       }
                   }
                   else
                   {
@@ -212,7 +216,7 @@ class UserContent
          programm_language = '$userInfoArray[new_p_launguage]',
          language = '$userInfoArray[new_launguage]',
          p_url = '$userInfoArray[new_git]',
-         avatar = '$userInfoArray[avatar]'
+         avatar = '$avatarPath'
           WHERE id='$userInfoArray[user_id]'");
         
         if ($query == 1) 
