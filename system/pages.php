@@ -89,6 +89,7 @@ if (isset($_GET['user']))
     1 или 0 в зависимости от рез-та
     */
     
+    $userContent->getAnnounceCurrentUser($_GET['user']);
     $sidebar = 'sidebar_user.html';
     $content = 'user_page.html';
     
@@ -148,5 +149,4 @@ echo $template->render(array('sidebar' => $sidebar, 'user_cabinet' => $cabinet, 
 
 $loader = new Twig_Loader_String();
 
-echo $site->futureID('annoucne');
 ?>
