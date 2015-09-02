@@ -2,6 +2,7 @@
 class ProjectContent
 {
     public $data;
+    public $avatarPath = null;
     /*
      * Функция для получения
      * Массива ВСЕХ объявлений
@@ -100,7 +101,7 @@ class UserContent
     
     public function getAllUser() 
     {
-        global $db, $twig;
+        global $db,$twig;
         
         $this->data = $db->getAll('SELECT * FROM os_user');
         
@@ -175,36 +176,7 @@ class UserContent
         
         global $db, $twig;
 
-        if ($_FILES['avatar']['error'] == 0)
-        {
-             if ($_FILES['avatar']['size'] <> 25000000)
-             {
-                  if ($_FILES['avatar']['type'] == "image/jpeg" ||
-                      $_FILES['avatar']['type'] == "image/png"  ||
-                      $_FILES['avatar']['type'] == "image/jpg" )
-                  {
-                       $extension = explode('.', $_FILES['avatar']['name']); //Копируем расширение файла
-                       $response = move_uploaded_file($_FILES['avatar']['tmp_name'], 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1]);
-                       
-                       if ($response = true)
-                       {
-                            $avatarPath = 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1];
-                       }
-                  }
-                  else
-                  {
-                       echo "Ошибка с типом";
-                  }
-             } 
-             else
-             {
-                  echo "Ошибка с размером";
-             }
-        }
-        else
-        {
-              echo "Ошибка!";
-        }
+        $avatarPath = $this->avatarUpload($_FILES,$userInfoArray['user_id']);
         
         $query = $db->query("UPDATE os_user SET
          name = '$userInfoArray[new_name]',
@@ -228,6 +200,36 @@ class UserContent
         { 
             return 320;
             //Данные не обновленны     
+        }
+    }
+
+    public function avatarUpload($data,$id)
+    {
+        global $db;
+
+        if ($data['avatar']['error'] == 0)
+        {
+             if ($data['avatar']['size'] <> 25000000)
+             {
+                  if ($data['avatar']['type'] == "image/jpeg" ||
+                      $data['avatar']['type'] == "image/png"  ||
+                      $data['avatar']['type'] == "image/jpg" )
+                  {
+                       $extension = explode('.', $data['avatar']['name']); //Копируем расширение файла
+                       $response = move_uploaded_file($data['avatar']['tmp_name'], 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1]);
+                       
+                       if ($response == true)
+                       {
+                            return 'system/users/avatars/'.md5($extension[0]).'.'.$extension[1];
+                       }
+
+                  }
+                  else
+                  {
+                       $url = $db->GetAll("SELECT avatar FROM os_user WHERE id='$id'");
+                       return $url[0]['avatar'];
+                  }
+             } 
         }
     }
     
