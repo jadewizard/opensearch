@@ -160,19 +160,13 @@ class UserContent
         
         if (!empty($data['user_id'])) 
         {
-            
             return 'cabinet.html';
-            //Если есть user_id, то выводим кабинет
-            
-            
+            //Если есть user_id, то выводим кабинет   
         } 
         else
-        {
-            
+        { 
             return 'login.html';
-            //Иначе форму логина
-            
-            
+            //Иначе форму логина      
         }
     }
     
@@ -180,6 +174,33 @@ class UserContent
     {
         
         global $db, $twig;
+
+        if ($_FILES['avatar']['error'] == 0)
+        {
+          var_dump($_FILES['avatar']);
+             if ($_FILES['avatar']['size'] <> 25000000)
+             {
+                  if ($_FILES['avatar']['type'] == "image/jpeg" ||
+                      $_FILES['avatar']['type'] == "image/png"  ||
+                      $_FILES['avatar']['type'] == "image/jpg" )
+                  {
+                       $response = move_uploaded_file($_FILES['avatar']['name'], '../users/avatars/'.$_FILES['avatar']['name']);
+                       var_dump($response);
+                  }
+                  else
+                  {
+                       echo "Ошибка с типом";
+                  }
+             } 
+             else
+             {
+                  echo "Ошибка с размером";
+             }
+        }
+        else
+        {
+              echo "Ошибка!";
+        }
         
         $query = $db->query("UPDATE os_user SET
          name = '$userInfoArray[new_name]',
@@ -195,20 +216,14 @@ class UserContent
           WHERE id='$userInfoArray[user_id]'");
         
         if ($query == 1) 
-        {
-            
+        {   
             return 310;
-            //Данные обновленны
-            
-            
+            //Данные обновленны          
         } 
         else
-        {
-            
+        { 
             return 320;
-            //Данные не обновленны
-            
-            
+            //Данные не обновленны     
         }
     }
     
