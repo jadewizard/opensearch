@@ -28,7 +28,6 @@ class UserFunctions
         } 
         else
         {
-            
             return $response = $check_response;
         }
     }
@@ -50,10 +49,7 @@ class UserFunctions
         
         if (count($query) > 0) 
         {
-            
             return 100; //Возврашаем код ошибки, которая гласит о том, что логин занят
-            
-            
         } 
         else
         {
@@ -62,9 +58,7 @@ class UserFunctions
             
             if (count($query) > 0) 
             {
-                return 110; //Возврашем код ошибки - E-Mail уже занят!
-                
-                
+                return 110; //Возврашем код ошибки - E-Mail уже занят!    
             }
         }
     }
@@ -78,9 +72,7 @@ class UserFunctions
         if (count($query) == 0) 
         {
             //Если такого логина нет, то:
-            return 200; //Возвращаем ошибку, логин или пароль не верный!
-            
-            
+            return 200; //Возвращаем ошибку, логин или пароль не верный!     
         } 
         else
         {
@@ -107,10 +99,7 @@ class UserFunctions
             } 
             else
             {
-                
                 return 200; //Возвращаем ошибку, логин или пароль не верны
-                
-                
             }
         }
     }
