@@ -35,7 +35,7 @@ require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
 require_once 'system/login.php'; //Вход на сайт
-require_once 'system/edit.php';
+require_once 'system/user_edit.php';
 require_once 'system/add_announce.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
