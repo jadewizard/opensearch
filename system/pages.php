@@ -81,15 +81,15 @@ else
 if (isset($_GET['user'])) 
 {
     
-    $isOwner = $user->isOwner($user->user_id($_SESSION), $_GET['user']);
     /*
     Определяем является ли текущий пользователь
-    //Владельцем той страницы котору посещает
-    //В данный момент и возвращаем шаблонизатору
-    1 или 0 в зависимости от рез-та
+    Владельцем той страницы котору посещает
+    В данный момент и возвращаем шаблонизатору
+    true или false в зависимости от рез-та
     */
+    $isOwner = $user->isOwner($user->user_id($_SESSION), $_GET['user']);
     
-    $userContent->getAnnounceCurrentUser($_GET['user']);
+    $userContent->getAnnounceCurrentUser($_GET['user']); //Объявления определённого юзера
     $sidebar = 'sidebar_user.html';
     $content = 'user_page.html';
     
@@ -139,6 +139,34 @@ if (isset($_GET['announcement']))
     равна announe, то будет выводится кнопка
     страничка проекта.
     */
+    
+    /*
+    Определяем является ли текущий пользователь
+    Владельцем той страницы котору посещает
+    В данный момент и возвращаем шаблонизатору
+    true или false в зависимости от рез-та
+    */
+    $isOwnerAnnounce = $user->isOwnerAnnounce($user->user_id($_SESSION),$_GET['announcement']);
+
+    if (isset($_GET['act']) && $_GET['act'] == 'edit') 
+    {
+        
+        if ($auth == true) 
+        {
+            //Если пользователь авторизирован
+            $announcementInfo = $projectContent->getThisAnnouncement((int) $_GET['announcement']);
+            
+            if ($isOwnerAnnounce == false) 
+            {
+                // Если пользователь не владелец текущего ID
+                header('Location: http://localhost/index.php?user=' . $_SESSION['user_id'] . '');
+                exit();
+            }
+        }
+        
+        $sidebar = 'sidebar_announce.html';
+        $content = 'announcement/edit.html';
+    } 
 }
 
 $template = $twig->loadTemplate('index.html');
