@@ -147,6 +147,24 @@ class UserFunctions
             return false;
         }
     }
+
+    public function isOwnerAnnounce($user_id,$annoucne_id)
+    {
+        global $db,$twig;
+
+        $owner_id = $db->GetRow("SELECT owner_id FROM os_announcment WHERE id='$annoucne_id'");
+        print_r($owner_id);
+
+        if ($user_id == $owner_id['owner_id'])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     /*
     Всем и так понятная функция
     которая помогают юзеру
