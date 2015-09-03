@@ -16,16 +16,30 @@
                         <th>Заголовок</th>
                         <th>Url</th>
                         <th>Дата</th>
+
+                        {% if isOwner == 1 %}
+
+                        <th>Дейтсвие</th>
+
+                        {% endif %}
+
                     </tr>
                 </thead>
                 <tbody>
                 {% for content in currentUserAnnounce %}
                     <tr>
                         <td>{{ content.title }}</td>
-                        <td><a href="https://github.com/jadewizard/opensearch">http://localhost/index.php?page=project&id=1</td>
+                        <td><a href="http://localhost/index.php?announcement={{ content.id }}">http://localhost/index.php?announcement={{ content.id }}</td>
                         <td>{{ content.announce_date }}</td>
+
+                        {% if isOwner == 1 %}
+
+                        <td><a href="http://localhost/index.php?announcement={{ content.id }}&act=edit">Редактировать</a> / <a href="#">Удалить</a></td>
+                        
+                        {% endif %}
+
                     </tr>
-                 {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
         </div>
