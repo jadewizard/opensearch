@@ -105,6 +105,15 @@ class ProjectContent
          team = '$contentInfoArray[new_announce_team]',
          host = '$contentInfoArray[new_announce_host]'
          WHERE id = '$contentInfoArray[announce_id]'");
+
+        if ($query == 1)
+        {
+            return 310;
+        }
+        else
+        {
+            return 320;
+        }
     }
 }
 

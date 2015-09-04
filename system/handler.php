@@ -94,6 +94,10 @@ function message($input)
 					Объявление отправленно на одобрение модератором.
 					</div>';
             break;
+
+        case '420':
+          # code...
+          break;
     }
 }
 ?>

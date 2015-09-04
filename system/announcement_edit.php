@@ -23,7 +23,9 @@ if (isset($_POST['announceSaveSend']))
 	);
 
 	$result = $projectContent->updateAnnounceInfo($contentInfoArray);
-	print_r($result);
+
+	$response_msg = message(array('response' => $result)); //Обрабатываем ответ
+	$twig->addGlobal('updMessage',$response_msg);
 }
 
 ?>
