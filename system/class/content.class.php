@@ -96,6 +96,9 @@ class ProjectContent
     {
         global $db;
 
+        $photoPath = $this->avatarUpload($_FILES,$contentInfoArray['announce_id']);
+        print_r($_FILES);
+
         $query = $db->query("UPDATE os_announcment SET
          title = '$contentInfoArray[new_announce_name]',
          annoucne_text = '$contentInfoArray[new_announce_text]',
@@ -103,7 +106,8 @@ class ProjectContent
          program_language = '$contentInfoArray[new_announce_planguage]',
          project_language = '$contentInfoArray[new_announce_language]',
          team = '$contentInfoArray[new_announce_team]',
-         host = '$contentInfoArray[new_announce_host]'
+         host = '$contentInfoArray[new_announce_host]',
+         img = '$photoPath'
          WHERE id = '$contentInfoArray[announce_id]'");
 
         if ($query == 1)
@@ -113,6 +117,38 @@ class ProjectContent
         else
         {
             return 320;
+        }
+    }
+
+    public function avatarUpload($data,$id)
+    {
+        global $db;
+
+        print_r($data);
+
+        if ($data['img']['error'] == 0)
+        {
+             if ($data['img']['size'] <> 25000000)
+             {
+                  if ($data['img']['type'] == "image/jpeg" ||
+                      $data['img']['type'] == "image/png"  ||
+                      $data['img']['type'] == "image/jpg" )
+                  {
+                       $extension = explode('.', $data['img']['name']); //Копируем расширение файла
+                       $response = move_uploaded_file($data['img']['tmp_name'], 'system/projects/avatars/'.md5($extension[0]).'.'.$extension[1]);
+                       
+                       if ($response == true)
+                       {
+                            return 'system/projects/avatars/'.md5($extension[0]).'.'.$extension[1];
+                       }
+
+                  }
+                  else
+                  {
+                       $url = $db->GetAll("SELECT img FROM os_announcment WHERE id='$id'");
+                       return $url[0]['img'];
+                  }
+             } 
         }
     }
 }

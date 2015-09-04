@@ -19,7 +19,6 @@ require_once 'engine.php';
 		каких либо параметров шаблонизатору.
 */
 $core = null;
-
 $auth = null;
 $userProfileInfo = null;
 
