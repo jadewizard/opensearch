@@ -91,6 +91,21 @@ class ProjectContent
             header('Location: /index.php?announcement=' . $site->futureID('annoucne') . '');
         }
     }
+
+    public function updateAnnounceInfo($contentInfoArray)
+    {
+        global $db;
+
+        $query = $db->query("UPDATE os_announcment SET
+         title = '$contentInfoArray[new_announce_name]',
+         annoucne_text = '$contentInfoArray[new_announce_text]',
+         action = '$contentInfoArray[new_announce_act]',
+         program_language = '$contentInfoArray[new_announce_planguage]',
+         project_language = '$contentInfoArray[new_announce_language]',
+         team = '$contentInfoArray[new_announce_team]',
+         host = '$contentInfoArray[new_announce_host]'
+         WHERE id = '$contentInfoArray[announce_id]'");
+    }
 }
 
 class UserContent
