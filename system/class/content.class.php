@@ -65,6 +65,8 @@ class ProjectContent
     public function addAnnouncement($announceDataArray) 
     {
         global $db, $site;
+
+        $photoPath = $this->avatarUpload($_FILES,'annoucne');
         
         $query = $db->query("INSERT INTO
          os_announcment 
@@ -75,6 +77,7 @@ class ProjectContent
           action,
           project_language,
           team,
+          img,
           host) VALUES
            ('$announceDataArray[announce_name]',
             '$announceDataArray[announce_text]',
@@ -83,6 +86,7 @@ class ProjectContent
             '$announceDataArray[announce_act]',
             '$announceDataArray[announce_language]',
             '$announceDataArray[announce_team]',
+            '$photoPath',
             '$announceDataArray[announce_host]')");
         
         if ($query == 1) 
@@ -97,7 +101,6 @@ class ProjectContent
         global $db;
 
         $photoPath = $this->avatarUpload($_FILES,$contentInfoArray['announce_id']);
-        print_r($_FILES);
 
         $query = $db->query("UPDATE os_announcment SET
          title = '$contentInfoArray[new_announce_name]',
@@ -120,7 +123,7 @@ class ProjectContent
         }
     }
 
-    public function avatarUpload($data,$id)
+    public function avatarUpload($data,$id = null,$method = null)
     {
         global $db;
 
@@ -145,11 +148,27 @@ class ProjectContent
                   }
                   else
                   {
-                       $url = $db->GetAll("SELECT img FROM os_announcment WHERE id='$id'");
-                       return $url[0]['img'];
+                       if ($method == annoucne)
+                       {
+                           return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';
+                       }
+                       else
+                       {
+                           $url = $db->GetAll("SELECT img FROM os_announcment WHERE id='$id'");
+                           return $url[0]['img'];
+                       }
                   }
              } 
         }
+    }
+
+    public function getLastid()
+    {
+        global $db;
+
+        $id = $db->getAll("SELECT MAX(id) FROM os_announcment");
+
+        return ($id[0]['MAX(id)']+1);
     }
 }
 

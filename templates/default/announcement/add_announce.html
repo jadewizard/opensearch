@@ -2,7 +2,7 @@
   {% if auth == true %}
   {{ addMessage|raw }}
   <p><h3>Новое объявление</h3>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label class="control-label" for="focusedInput">Заголовок объявления *</label>
         <input class="form-control" name="announce_name" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
@@ -32,6 +32,11 @@
       <div class="form-group">
         <label class="control-label" for="focusedInput">Хостинг</label>
         <input class="form-control" name="announce_host" id="focusedInput" value="{{ userProfileInfo.name }}" type="text">
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="focusedInput">Фотография</label>
+        <input name="img" type="file">
+         <span class="help-block">Размер файла не более 2.5 МБ, PNG,JPG,JPEG</span>
       </div>
       <div class="form-group">
         <input class="btn btn-success" value="Отправить на проверку" id="focusedInput" type="submit" name="addsend">

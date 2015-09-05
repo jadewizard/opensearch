@@ -1,6 +1,8 @@
 <?php
 $announceDataArray = array('announce_name' => null, 'announce_text' => null, 'announce_act' => null, 'announce_planguage' => null, 'announce_language' => null, 'announce_team' => null, 'announce_date' => null, 'announce_img' => null, 'announce_host' => null, 'owner_id' => null);
 
+$projectContent->getLastid();
+
 if (isset($_POST['addsend'])) 
 {
     
