@@ -66,7 +66,7 @@ class ProjectContent
     {
         global $db, $site;
 
-        $photoPath = $this->avatarUpload($_FILES,'annoucne');
+        $photoPath = $this->avatarUpload($_FILES,null,'annoucne');
         
         $query = $db->query("INSERT INTO
          os_announcment 
@@ -123,7 +123,7 @@ class ProjectContent
         }
     }
 
-    public function avatarUpload($data,$id = null,$method = null)
+    public function avatarUpload($data,$id,$method = null)
     {
         global $db;
 
@@ -148,7 +148,7 @@ class ProjectContent
                   }
                   else
                   {
-                       if ($method == annoucne)
+                       if ($method == 'annoucne')
                        {
                            return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';
                        }
