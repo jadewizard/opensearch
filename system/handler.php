@@ -44,11 +44,72 @@ function message($input)
                   </div>';
             break;
 
-        case '160': //Пароль долже состоять минимум из 6 символов
+        case '160': //Запонитье все поля!
             return '<div class="alert alert-dismissible alert-danger">
                   Заполните обязательные поля!
                   </div>';
             break;
+
+        case '170': //Логин должен состоять из английских букв и цифр 0-9!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Логин должен состоять из английских букв и цифр 0-9!
+                  </div>';
+            break;
+
+        case '172': //Логин может быть длинной от 3 символов!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Логин должен содержать минимум 4 символа
+                  </div>';
+            break;
+
+        case '174': //Логин может быть длинной до 30 символов!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Логин должен содержать не более 30 символов
+                  </div>';
+            break;
+
+        case '176': //Пароль может состоять из английских букв, цифр и символов \"? * - _ @ #\"!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Пароль может состоять из английских букв, цифр и символов \"? * - _ @ #\"!
+                  </div>';
+            break;
+
+        case '178': //Пароль может быть длинной от 7 символов!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Пароль должен содержать минимум 7 символов
+                  </div>';
+            break;
+
+        case '180': //Мыло не верно!!!!!!!!!!!1111!!!!!!
+            return '<div class="alert alert-dismissible alert-danger">
+                  Неверно заполнено поле E-Mail
+                  </div>';
+            break;
+
+        case '182': //Мыло через чур длинное
+            return '<div class="alert alert-dismissible alert-danger">
+                  Поле E-Mail должно содержать в себе не более 12 символов
+                  </div>';
+            break;
+
+        case '184': //Имя буквы
+            return '<div class="alert alert-dismissible alert-danger">
+                  Имя должено состоять из английских или русских букв и цифр 0-9!
+                  </div>';
+            break;
+
+        case '186': //Имя короткое
+            return '<div class="alert alert-dismissible alert-danger">
+                  Имя должно содержать минимум 3 символа!
+                  </div>';
+            break;
+
+        case '188': //Имя короткое
+            return '<div class="alert alert-dismissible alert-danger">
+                  Имя должно содержать максимум 30 символов!
+                  </div>';
+            break;
+            
             // Ошибки при авторизации пользователя
             
             
