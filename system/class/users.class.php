@@ -94,6 +94,21 @@ class UserFunctions
     public function authorization($user_login, $user_pass, $type) 
     {
         global $db, $site;
+
+        //Login check
+        if(!preg_match("/[0-9a-z_A-Z]/i", $user_login))
+            return 202;
+        if(strlen($user_login) <= 4)
+            return 204;
+        if(strlen($user_login) > 30)
+            return 206;
+        
+        //Password check
+        if(!preg_match("/[0-9a-z_A-Z\?\*\-\_\@\#]/i", $user_pass))
+            return 208;
+        if(strlen($user_pass) < 6)
+            return 210;
+
         //Проверяем есть ли такой логин
         $query = $db->getAll("SELECT id FROM os_user WHERE login = '$user_login'");
         
