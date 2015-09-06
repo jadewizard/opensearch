@@ -12,6 +12,34 @@ class UserFunctions
         Переменная $check_response содержит в себе
         КОД сообщения который получен в ходе проверки
         */
+
+        //Login check
+        if(!preg_match("/[0-9a-z_A-Z]/i", $login))
+            return 170;
+        if(strlen($login) <= 4)
+            return 172;
+        if(strlen($login) > 30)
+            return 174;
+        
+        //Password check
+        if(!preg_match("/[0-9a-z_A-Z\?\*\-\_\@\#]/i", $pass))
+            return 176;
+        if(strlen($pass) < 7)
+            return 178;
+        
+        //Email check
+        if(!preg_match("/[0-9a-z_]+@[0-9a-z_^\.-]+\.[a-z]{2,3}/i", $email))
+            return 180;
+        if(strlen($email) > 180)
+            return 182;
+
+        //Name check
+        if(!preg_match("/[^а-я]+/msi", $login))
+            return 184;
+        if(strlen($name) <= 3)
+            return 186;
+        if(strlen($name) > 30)
+            return 188;
         
         $check_response = $this->UserCheck($login, $email);
         
