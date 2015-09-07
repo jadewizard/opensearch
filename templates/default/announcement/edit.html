@@ -22,12 +22,30 @@
         <input class="form-control" name="new_announce_planguage" id="focusedInput" value="{{ announceContent.program_language }}" type="text">
       </div>
       <div class="form-group">
-        <label class="control-label" for="focusedInput">Язык общения *</label>
-        <input class="form-control" name="new_announce_language" id="focusedInput" value="{{ announceContent.project_language }}" type="text">
+        <label class="control-label" for="focusedInput">Язык общения</label>
+        <select class="form-control" name="new_announce_language" value="Россия" id="select">
+          <option>Ru/En</option>
+          <option>Ru/De</option>
+          <option>Ru/Fr</option>
+          <option>Ru/Ch</option>
+          <option>En/De</option>
+          <option>En/Fr</option>
+          <option>En/Cn</option>
+          <option>En</option>
+          <option>Fr</option>
+          <option>De</option>
+          <option>Ru</option>
+          <option>Ch</option>
+        </select>
       </div>
       <div class="form-group">
-        <label class="control-label" for="focusedInput">Команда</label>
-        <input class="form-control" name="new_announce_team" id="focusedInput" value="{{ announceContent.team }}" type="text">
+        <label class="control-label" for="focusedInput">Команда (человек)</label>
+        <select class="form-control" name="new_announce_team" value="Россия" id="select">
+          <option>1-10</option>
+          <option>10-100</option>
+          <option>100-1000</option>
+          <option>Более 1000</option>
+        </select>
       </div>
       <div class="form-group">
         <label class="control-label" for="focusedInput">Хостинг</label>
