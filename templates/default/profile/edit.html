@@ -13,22 +13,19 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="focusedInput">Страна</label>
-        <select class="form-control" name="new_country" id="select">
-          <option>Россия</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        <select class="form-control" name="new_country" value="Россия" id="select">
+        <option>{{ userProfileInfo.country }}</option>
+        {% for country in allCountries %}
+          <option>{{ country.title }}</option>
+        {% endfor %}
         </select>
       </div>
       <div class="form-group">
         <label class="control-label" for="focusedInput">Язык общения</label>
-        <select class="form-control" name="new_launguage" id="select">
+        <select class="form-control" name="new_launguage" value="Россия" id="select">
           <option>Ru/En</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option>Ru</option>
+          <option>En</option>
         </select>
       </div>
       <div class="form-group">
