@@ -15,11 +15,13 @@ require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
 require_once 'functions.php'; //Различные функции
 require_once 'class/content.class.php'; //Класс для работы с постами на сайте
+require_once 'class/info.class.php'; //Класс для получения различной информации
 
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
+$info = new info();
 $site = new siteFunctions();
 $user = new UserFunctions(); //Функции юзеров
 $projectContent = new ProjectContent(); //Объявления
@@ -28,6 +30,9 @@ $userContent = new UserContent(); //Пользователи
 //Получаем все объявления и юзеров
 $projectContent->getAllAnnouncement(); //Объялвения
 $userContent->getAllUser(); //пользователи
+
+//Получаем список всех стран мира
+$info->getCountries();
 
 $currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 
