@@ -29,12 +29,12 @@
                 {% for content in currentUserAnnounce %}
                     <tr>
                         <td>{{ content.title }}</td>
-                        <td><a href="http://localhost/index.php?announcement={{ content.id }}">http://localhost/index.php?announcement={{ content.id }}</td>
+                        <td><a href="http://localhost/opensearch/index.php?announcement={{ content.id }}">http://localhost/opensearch/index.php?announcement={{ content.id }}</td>
                         <td>{{ content.announce_date }}</td>
 
                         {% if isOwner == 1 %}
 
-                        <td><a href="http://localhost/index.php?announcement={{ content.id }}&act=edit">Редактировать</a> / <a href="#">Удалить</a></td>
+                        <td><a href="http://localhost/opensearch/index.php?announcement={{ content.id }}&act=edit">Редактировать</a> / <a href="#">Удалить</a></td>
                         
                         {% endif %}
 

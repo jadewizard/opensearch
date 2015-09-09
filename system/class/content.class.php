@@ -127,8 +127,6 @@ class ProjectContent
     {
         global $db;
 
-        print_r($data);
-
         if ($data['img']['error'] == 0)
         {
              if ($data['img']['size'] <> 25000000)
