@@ -11,6 +11,12 @@ include 'class/safemysql.class.php'; //Класс для работы с БД
 
 $db = new SafeMysql(array('user' => 'root', 'pass' => '211996', 'db' => 'db', 'charset' => 'utf8'));
 
+require_once 'pagination/Manager.php'; //Пагинатор
+require_once 'pagination/Helper.php'; //Помощшник для пагинатора
+
+$paginationManager = new Krugozor_Pagination_Manager(5, 5, $_REQUEST);
+//Класс пагинатора
+
 require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
 require_once 'functions.php'; //Различные функции
@@ -36,6 +42,9 @@ $info->getCountries();
 
 $currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 
+
+
+$projectContent->getPageCount();
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
 require_once 'system/logout.php'; //Выход с сайта
@@ -45,5 +54,8 @@ require_once 'system/announcement_edit.php';
 require_once 'system/add_announce.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
+
+
+
 
 ?>

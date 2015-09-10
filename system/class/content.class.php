@@ -10,9 +10,17 @@ class ProjectContent
     */
     public function getAllAnnouncement() 
     {
-        global $db, $twig;
+        global $db, $twig, $paginationManager, $paginationHelper;
         
-        $this->data = $db->getAll('SELECT * FROM os_announcment');
+        $this->data = $db->getAll($sql = "SELECT
+           *
+        FROM
+           `os_announcment`
+        ORDER BY
+           `id` ASC
+        LIMIT " .
+           $paginationManager->getStartLimit() . "," .
+           $paginationManager->getStopLimit());
         
         for ($i = 0; $i < count($this->data); $i++) 
         {
@@ -31,8 +39,45 @@ class ProjectContent
             $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
 
+            $counter = $paginationManager->getAutoincrementNum();
+
+            // Инстанцирование объекта `Krugozor_Pagination_Helper`,
+            // в него передаётся объект класса `Krugozor_Pagination_Manager` $paginationManager
+            $paginationHelper = new Krugozor_Pagination_Helper($paginationManager);
+
+            // Настройка внешнего вида пагинатора
+                       // Хотим получить стандартный вид пагинации
+            $paginationHelper->setPaginationType(Krugozor_Pagination_Helper::PAGINATION_NORMAL_TYPE)
+                       // Устанавливаем CSS-класс каждого элемента <a> в интерфейсе пагинатора
+                     ->setCssNormalLinkClass("normal_link")
+                       // Устанавливаем CSS-класс элемента <span> в интерфейсе пагинатора,
+                       // страница которого открыта в текущий момент.
+                     ->setCssActiveLinkClass("active_link")
+                       // Параметр для query string гиперссылки
+                     ->setRequestUriParameter("param_1", "value_1")
+                       // Параметр для query string гиперссылки
+                     ->setRequestUriParameter("param_2", "value_2")
+                       // Устанавливаем идентификатор фрагмента гиперссылок пагинатора
+                     ->setFragmentIdentifier("result1");
+
+        $paginationHelper->getPagination()->getCount();
+
+        $twig->addGlobal('counter',$counter);
+        //$twig->addGlobal('paginator',$paginationHelper->getHtml());
         $twig->addGlobal('announceAll', $output_array);
     }
+
+    //Функция возвращает кол-во 
+    //Постов на сайте
+    public function getPageCount()
+    {
+        global $db;
+
+        $query = $db->getRow('SELECT COUNT(id) FROM os_announcment');
+        return ($query['COUNT(id)']);
+
+    }
+
     /*
      * Функция для получения
      * Массива с контеном

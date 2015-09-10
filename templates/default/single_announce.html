@@ -1,4 +1,5 @@
 {% for content in announceAll %}
+{% set counter = counter + 1 %}
 <div class="well">
     <div class="media">
         <div class="media-left">
@@ -6,6 +7,7 @@
             <img class="img-circle" src="{{ content.img }}" width="150px" height="150px">
             </a>
         </div>
+        {{counter}}
         <div class="media-body">
             <h3 class="media-heading">{{ content.title }}</h3>
             <p class="info">

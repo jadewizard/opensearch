@@ -75,6 +75,14 @@ else
     
     $twig->addGlobal('auth_message', message($input = array('response' => '300')));
 }
+
+if (isset($_GET['page']) ||
+          $_GET['page'] == 'announcement' ||
+          isset($_GET['n']))
+{
+    $pageNumber = $_GET['n'];
+}
+
 //Страница конкретного юзера
 //index.php?user=[ID]
 if (isset($_GET['user'])) 
