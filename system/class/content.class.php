@@ -31,7 +31,19 @@ class ProjectContent
             $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
 
-        $twig->addGlobal('announceAll', $output_array);
+        $expArray = $this->explodeAnnounce($output_array);
+        $twig->addGlobal('announceAll', ($expArray));
+    }
+
+    public function explodeAnnounce($array)
+    {
+        global $paginationManager;
+
+            $expArray = array_chunk($array, $paginationManager->pageNumber,true);
+            
+            print_r($expArray);
+
+            return $expArray;
     }
 
     //Функция возвращает кол-во 

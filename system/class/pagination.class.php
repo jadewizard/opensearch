@@ -15,10 +15,12 @@ class paginations
 
         $this->pageNumber = ceil(count($data) / 10);
 
-        $this->getHtml();
+        print_r($this->pageNumber);
+
+        $this->getPageUrl();
      }
 
-     public function getHtml()
+     public function getPageUrl()
      {
      	global $twig;
 

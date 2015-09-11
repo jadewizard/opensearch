@@ -21,7 +21,7 @@ require_once 'engine.php';
 $core = null;
 $auth = null;
 $userProfileInfo = null;
-//$paginationTmp = null;
+$paginationTmp = 'pagination.html';
 
 if (isset($_GET['page'])) 
 {
