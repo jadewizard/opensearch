@@ -22,6 +22,7 @@ require_once 'class/users.class.php'; //Класс для работы с юзе
 require_once 'functions.php'; //Различные функции
 require_once 'class/content.class.php'; //Класс для работы с постами на сайте
 require_once 'class/info.class.php'; //Класс для получения различной информации
+require_once 'class/pagination.class.php'; //Пагинация
 
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
@@ -32,6 +33,7 @@ $site = new siteFunctions();
 $user = new UserFunctions(); //Функции юзеров
 $projectContent = new ProjectContent(); //Объявления
 $userContent = new UserContent(); //Пользователи
+$paginationManager = new paginations(); //Пагинация
 
 //Получаем все объявления и юзеров
 $projectContent->getAllAnnouncement(); //Объялвения
