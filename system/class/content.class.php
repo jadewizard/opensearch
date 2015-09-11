@@ -39,11 +39,11 @@ class ProjectContent
     {
         global $paginationManager;
 
-            $expArray = array_chunk($array, $paginationManager->pageNumber,true);
+            $expArray = array_chunk($array, 1);
             
             print_r($expArray);
 
-            return $expArray;
+            return $expArray[$_GET['p']];
     }
 
     //Функция возвращает кол-во 
