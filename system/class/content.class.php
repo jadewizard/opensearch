@@ -39,11 +39,23 @@ class ProjectContent
     {
         global $paginationManager;
 
-            $expArray = array_chunk($array, 1);
-            
-            print_r($expArray);
+            $expArray = array_chunk($array, 10);
 
-            return $expArray[$_GET['p']];
+            if (isset($_GET['p']))
+            {
+                if (!empty($expArray[$_GET['p']]))
+                {
+                    return $expArray[$_GET['p']];
+                }
+                else
+                {
+                    return $expArray[0];
+                }
+            }
+            else
+            {
+                return $expArray[0];
+            }
     }
 
     //Функция возвращает кол-во 
