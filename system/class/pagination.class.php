@@ -15,8 +15,6 @@ class paginations
 
         $this->pageNumber = ceil(count($data) / 10);
 
-        print_r($this->pageNumber);
-
         $this->getPageUrl();
      }
 
@@ -35,6 +33,12 @@ class paginations
      	    if ($this->currentPage != 1)
      	    {
      	    	$this->prevPage = $this->currentPage -1;
+     	    	$twig->addGlobal('pageLink','index.php?page=announcement&p='.$this->prevPage);
+     	    }
+     	    else
+     	    {
+     	    	$this->prevPage = 0;
+     	    	$twig->addGlobal('pageLink','#');
      	    }
 
      	    $twig->addGlobal('currentPage',$this->currentPage);
