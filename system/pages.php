@@ -21,6 +21,7 @@ require_once 'engine.php';
 $core = null;
 $auth = null;
 $userProfileInfo = null;
+//$paginationTmp = null;
 
 if (isset($_GET['page'])) 
 {
@@ -31,6 +32,7 @@ if (isset($_GET['page']))
         case 'announcement':
             $sidebar = 'sidebar_projects.html';
             $content = 'single_announce.html';
+            $paginationTmp = 'pagination.html';
             break;
             //Страница всех людей/
             
@@ -74,13 +76,6 @@ else
 {
     
     $twig->addGlobal('auth_message', message($input = array('response' => '300')));
-}
-
-if (isset($_GET['page']) ||
-          $_GET['page'] == 'announcement' ||
-          isset($_GET['n']))
-{
-    $pageNumber = $_GET['n'];
 }
 
 //Страница конкретного юзера
@@ -180,7 +175,7 @@ $template = $twig->loadTemplate('index.html');
 //Функция которая проверит залогинен ли наш юзер
 $cabinet = $userContent->GetUserCabinet($_SESSION);
 
-echo $template->render(array('sidebar' => $sidebar, 'user_cabinet' => $cabinet, 'content' => $content, 'core' => $core, 'userProfileInfo' => $userProfileInfo));
+echo $template->render(array('sidebar' => $sidebar, 'user_cabinet' => $cabinet, 'content' => $content, 'core' => $core, 'userProfileInfo' => $userProfileInfo, 'pagination' => $paginationTmp));
 
 $loader = new Twig_Loader_String();
 
