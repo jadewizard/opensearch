@@ -39,13 +39,13 @@ class ProjectContent
     {
         global $paginationManager;
 
-            $expArray = array_chunk($array, 10);
+            $expArray = array_chunk($array, 2);
 
             if (isset($_GET['p']))
             {
-                if (!empty($expArray[$_GET['p']]))
+                if (!empty($expArray[$_GET['p']-1]))
                 {
-                    return $expArray[$_GET['p']];
+                    return $expArray[$_GET['p']-1];
                 }
                 else
                 {
