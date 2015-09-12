@@ -39,7 +39,6 @@ class ProjectContent
     {
         global $paginationManager;
 
-            print($paginationManager->announceAmount);
             $expArray = array_chunk($array, $paginationManager->announceAmount);
             //В этой строке задаем кол-во записей
             //Выводимой на странице
