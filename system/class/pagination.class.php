@@ -29,32 +29,22 @@ class paginations
 
      	if (isset($_GET['p']))
      	{
-     		//Определяем текущюю страницу
-     	    $this->currentPage = $_GET['p'];
-     	    //Определяем следующую страницу
-     	    $this->nextPage = $this->currentPage + 1;
-
-     	    //Предыдущая страница
-     	    if ($this->currentPage != 1)
-     	    {
-     	    	$this->prevPage = $this->currentPage -1;
-     	    	$twig->addGlobal('pageLink','index.php?page=announcement&p='.$this->prevPage);
-     	    }
-     	    else
-     	    {
-     	    	$this->prevPage = 0;
-     	    	$twig->addGlobal('pageLink','#');
-     	    }
-
-     	    if ($this->nextPage == $this->pageNumber-1)
-     	    {
-     	    	$twig->addGlobal('pageLink','#');
-     	    }
+     		$this->currentPage = $_GET['p']; //Текущая страница
+     		$this->nextPage = 'index.php?page=announcement&p='.($this->currentPage+1).'';
+     		
+     		if ($this->currentPage != 1)
+     		{
+     			$this->prevPage = 'index.php?page=announcement&p='.($this->currentPage-1).'';
+     		}
+     		else
+     		{
+     			$this->prevPage = null;
+     		}
+     	}
 
      	    $twig->addGlobal('currentPage',$this->currentPage);
      	    $twig->addGlobal('nextPage',$this->nextPage);
      	    $twig->addGlobal('prevPage',$this->prevPage);
-     	}
      }
 }
 
