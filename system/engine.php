@@ -11,12 +11,6 @@ include 'class/safemysql.class.php'; //Класс для работы с БД
 
 $db = new SafeMysql(array('user' => 'root', 'pass' => '211996', 'db' => 'db', 'charset' => 'utf8'));
 
-require_once 'pagination/Manager.php'; //Пагинатор
-require_once 'pagination/Helper.php'; //Помощшник для пагинатора
-
-$paginationManager = new Krugozor_Pagination_Manager(5, 5, $_REQUEST);
-//Класс пагинатора
-
 require_once 'vendor/autoload.php'; //Шаблонизатор
 require_once 'class/users.class.php'; //Класс для работы с юзерами на сайте
 require_once 'functions.php'; //Различные функции
@@ -28,7 +22,7 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates/default/'); //Путь к шаблону
 $twig = new Twig_Environment($loader); //Инициализируем шаблонизатор
 
-$info = new info();
+//$info = new info();
 $site = new siteFunctions();
 $user = new UserFunctions(); //Функции юзеров
 $projectContent = new ProjectContent(); //Объявления
@@ -40,10 +34,9 @@ $projectContent->getAllAnnouncement(); //Объялвения
 $userContent->getAllUser(); //пользователи
 
 //Получаем список всех стран мира
-$info->getCountries();
+//$info->getCountries();
 
 $currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
-
 
 
 $projectContent->getPageCount();
