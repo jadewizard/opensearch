@@ -3,6 +3,7 @@
 class paginations
 {
 	 public $pageNumber;
+	 public $announceAmount;
 	 public $currentPage;
 	 public $nextPage;
 	 public $prevPage;
@@ -13,9 +14,11 @@ class paginations
 
         $data = $db->getAll("SELECT * FROM os_announcment");
 
-        $this->pageNumber = ceil(count($data) / 6);
+        $this->pageNumber = ceil(count($data) / 10);
+        //Определяем колв-во страниц
 
-        print_r($this->pageNumber);
+        $this->announceAmount = 10;
+        //Кол-во постов выводимых на 1 странице
 
         $this->getPageUrl();
      }
@@ -40,6 +43,11 @@ class paginations
      	    else
      	    {
      	    	$this->prevPage = 0;
+     	    	$twig->addGlobal('pageLink','#');
+     	    }
+
+     	    if ($this->nextPage == $this->pageNumber-1)
+     	    {
      	    	$twig->addGlobal('pageLink','#');
      	    }
 
