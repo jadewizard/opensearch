@@ -13,7 +13,9 @@ class paginations
 
         $data = $db->getAll("SELECT * FROM os_announcment");
 
-        $this->pageNumber = ceil(count($data) / 1);
+        $this->pageNumber = ceil(count($data) / 6);
+
+        print_r($this->pageNumber);
 
         $this->getPageUrl();
      }
