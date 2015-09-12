@@ -39,7 +39,10 @@ class ProjectContent
     {
         global $paginationManager;
 
-            $expArray = array_chunk($array, 2);
+            print($paginationManager->pageNumber);
+            $expArray = array_chunk($array, 1);
+            //В этой строке задаем кол-во записей
+            //Выводимой на странице
 
             if (isset($_GET['p']))
             {
