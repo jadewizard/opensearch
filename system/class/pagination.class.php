@@ -6,7 +6,8 @@ class paginations
 	 public $announceAmount;
 	 public $currentPage;
 	 public $nextPage;
-	 public $prevPage;
+	 public $prevPage = null;
+	 public $btnStyle = null;
 
      function __construct() 
      {
@@ -17,7 +18,7 @@ class paginations
         $this->pageNumber = ceil(count($data) / 10);
         //Определяем колв-во страниц
 
-        $this->announceAmount = 10;
+        $this->announceAmount = 1;
         //Кол-во постов выводимых на 1 странице
 
         $this->getPageUrl();
@@ -35,16 +36,26 @@ class paginations
      		if ($this->currentPage != 1)
      		{
      			$this->prevPage = 'index.php?page=announcement&p='.($this->currentPage-1).'';
+                //Если текущая страница НЕ 1, то формируем ссылку
+                //На предидущую страницу.
      		}
      		else
      		{
-     			$this->prevPage = null;
+     			$this->btnStyle = 'disabled';
+     			//Если текущая страница 1, то задаём класс для кнопки
+     			//На предидущую страницу disabled.
      		}
+     	}
+     	else
+     	{
+     		$this->btnStyle = 'disabled';
+     		$this->nextPage = 'index.php?page=announcement&p=2';
      	}
 
      	    $twig->addGlobal('currentPage',$this->currentPage);
      	    $twig->addGlobal('nextPage',$this->nextPage);
      	    $twig->addGlobal('prevPage',$this->prevPage);
+     	    $twig->addGlobal('btnStyle',$this->btnStyle);
      }
 }
 
