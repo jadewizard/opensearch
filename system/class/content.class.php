@@ -48,6 +48,7 @@ class ProjectContent
                 if (!empty($expArray[$_GET['p']-1]))
                 {
                     return $expArray[$_GET['p']-1];
+                    // "-1" - поскольку нумерация массива с 0.
                 }
                 else
                 {
@@ -269,7 +270,6 @@ class UserContent
     */
     public function GetUserCabinet($data) 
     {
-        
         if (!empty($data['user_id'])) 
         {
             return 'cabinet.html';
@@ -284,7 +284,6 @@ class UserContent
     
     public function updateUserInfo($userInfoArray) 
     {
-        
         global $db, $twig;
 
         $avatarPath = $this->avatarUpload($_FILES,$userInfoArray['user_id']);
