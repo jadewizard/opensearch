@@ -50,6 +50,8 @@ class paginations
      	{
      		$this->btnStyle = 'disabled';
      		$this->nextPage = 'index.php?page=announcement&p=2';
+     		//Если нет GET параметра P, то предидущей страницы нет,
+     		//И кнопка << - выключена, следующая страница 2.
      	}
 
      	    $twig->addGlobal('currentPage',$this->currentPage);
