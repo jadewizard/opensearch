@@ -1,10 +1,10 @@
 RewriteEngine on
-RewriteRule ^ads(/?)+$ index.php?page=announcement [L]
-RewriteRule ^users(/?)+$ index.php?page=users [L]
-RewriteRule ^registration(/?)+$ index.php?page=registration [L]
+RewriteRule ^announcement(/?)+$ index.php?page=announcement [QSA]
+RewriteRule ^users(/?)+$ index.php?page=users [QSA]
+RewriteRule ^registration(/?)+$ index.php?page=registration [QSA]
 
-RewriteRule ^p([a-zA-Z0-9_-]+)$ index.php?announcement=$1 [QSA]
-RewriteRule ^p([a-zA-Z0-9_-]+)/$ index.php?announcement=$1 [QSA]
+RewriteRule ^a([a-zA-Z0-9_-]+)$ index.php?announcement=$1 [QSA]
+RewriteRule ^a([a-zA-Z0-9_-]+)/$ index.php?announcement=$1 [QSA]
 
 RewriteRule ^u([a-zA-Z0-9_-]+)$ index.php?user=$1 [QSA]
 RewriteRule ^u([a-zA-Z0-9_-]+)/$ index.php?user=$1 [QSA]
