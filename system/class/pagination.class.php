@@ -15,10 +15,10 @@ class paginations
 
         $data = $db->getAll("SELECT * FROM os_announcment");
 
-        $this->pageNumber = ceil(count($data) / 1);
+        $this->pageNumber = ceil(count($data) / 10);
         //Определяем колв-во страниц
 
-        $this->announceAmount = 1;
+        $this->announceAmount = 10;
         //Кол-во постов выводимых на 1 странице
 
         $this->getPageUrl();
