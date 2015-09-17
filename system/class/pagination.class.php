@@ -4,6 +4,7 @@ class paginations
 {
 	 public $pageNumber;
 	 public $announceAmount;
+	 public $usersAmount;
 	 public $currentPage;
 	 public $nextPage;
 	 public $prevPage = null;
@@ -13,13 +14,21 @@ class paginations
      {
         global $db;
 
-        $data = $db->getAll("SELECT * FROM os_announcment");
+        $data = array(
+        	'announcement' => $db->getAll("SELECT * FROM os_announcment"),
+        	'users' => $db->getAll("SELECT * FROM os_user"));
+        	//Получаем данные из БД
 
-        $this->pageNumber = ceil(count($data) / 10);
-        //Определяем колв-во страниц
-
-        $this->announceAmount = 10;
+        $this->announceAmount = 5;
         //Кол-во постов выводимых на 1 странице
+
+        $this->usersAmount = 5;
+        //Кол-во пользователей выводимых на 1 странице
+
+        $this->pageNumber = array(
+        	'announcement' => ceil(count($data['announcement']) / $this->announceAmount),
+        	'users' => ceil(count($data['users']) / $this->usersAmount));
+        	//Определяем колв-во страниц
 
         $this->getPageUrl();
      }
@@ -28,14 +37,18 @@ class paginations
      {
      	global $twig;
 
-     	if (isset($_GET['p']))
+     	print_r($_GET);
+
+     	if (isset($_GET['page']) &&
+     	   ($_GET['page'] == 'announcement') &&
+     	   isset($_GET['p']))
      	{
      		$this->currentPage = $_GET['p']; //Текущая страница
-     		$this->nextPage = 'index.php?page=announcement&p='.($this->currentPage+1).'';
+     		$this->nextPage = 'announcement?p='.($this->currentPage+1).'';
      		
      		if ($this->currentPage != 1)
      		{
-     			$this->prevPage = 'index.php?page=announcement&p='.($this->currentPage-1).'';
+     			$this->prevPage = 'announcement?p='.($this->currentPage-1).'';
                 //Если текущая страница НЕ 1, то формируем ссылку
                 //На предидущую страницу.
      		}
@@ -46,7 +59,7 @@ class paginations
      			//На предидущую страницу disabled.
      		}
 
-     		if ($this->currentPage == $this->pageNumber)
+     		if ($this->currentPage == $this->pageNumber['announcement'])
      		{
      			$this->btnStyle['second'] = 'disabled';
      			$this->nextPage = null;
@@ -57,7 +70,43 @@ class paginations
      	else
      	{
      		$this->btnStyle['first'] = 'disabled';
-     		$this->nextPage = 'index.php?page=announcement&p=2';
+     		$this->nextPage = 'announcement?p=2';
+     		//Если нет GET параметра P, то предидущей страницы нет,
+     		//И кнопка << - выключена, следующая страница 2.
+     	}
+
+     	if (isset($_GET['page']) &&
+     	   ($_GET['page'] == 'users') &&
+     	   isset($_GET['p']))
+     	{
+     		$this->currentPage = $_GET['p']; //Текущая страница
+     		$this->nextPage = 'users?p='.($this->currentPage+1).'';
+     		
+     		if ($this->currentPage != 1)
+     		{
+     			$this->prevPage = 'users?p='.($this->currentPage-1).'';
+                //Если текущая страница НЕ 1, то формируем ссылку
+                //На предидущую страницу.
+     		}
+     		else
+     		{
+     			$this->btnStyle['first'] = 'disabled';
+     			//Если текущая страница 1, то задаём класс для кнопки
+     			//На предидущую страницу disabled.
+     		}
+
+     		if ($this->currentPage == $this->pageNumber['users'])
+     		{
+     			$this->btnStyle['second'] = 'disabled';
+     			$this->nextPage = null;
+     			//Если текущая страница = последней странцие, то
+     			//Следующая страница = null и кнопка >> disabled
+     		}
+     	}
+     	else
+     	{
+     		$this->btnStyle['first'] = 'disabled';
+     		$this->nextPage = 'users?p=2';
      		//Если нет GET параметра P, то предидущей страницы нет,
      		//И кнопка << - выключена, следующая страница 2.
      	}
