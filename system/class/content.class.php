@@ -237,7 +237,34 @@ class UserContent
             $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
         
-        $twig->addGlobal('allUserContent', $output_array);
+        $expArray = $this->explodeUsers($output_array);
+        $twig->addGlobal('allUserContent', $expArray);
+    }
+
+    public function explodeUsers($array)
+    {
+        global $paginationManager;
+
+            $expArray = array_chunk($array, $paginationManager->usersAmount);
+            //В этой строке задаем кол-во записей
+            //Выводимой на странице
+
+            if (isset($_GET['p']))
+            {
+                if (!empty($expArray[$_GET['p']-1]))
+                {
+                    return $expArray[$_GET['p']-1];
+                    // "-1" - поскольку нумерация массива с 0.
+                }
+                else
+                {
+                    return $expArray[0];
+                }
+            }
+            else
+            {
+                return $expArray[0];
+            }
     }
     
     public function getThisUser($id) 
