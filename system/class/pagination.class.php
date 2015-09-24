@@ -75,10 +75,18 @@ class paginations
                 //И кнопка << - выключена, следующая страница 2.
             }
      	}
+        else
+        {
+            $this->btnStyle['first'] = 'disabled';
+            $this->nextPage = 'announcement?p=2';
+        }
 
 
      	if (isset($_GET['page']) && ($_GET['page'] == 'users'))
      	{
+            $this->btnStyle['first'] = null;
+            //Нулим переменную, что бы сбросить прошлоее значение (disabled) с неё
+
             if (isset($_GET['p']))
             {
                 $this->currentPage = $_GET['p']; //Текущая страница
