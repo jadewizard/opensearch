@@ -7,6 +7,9 @@
     </div>
 </div>
 <div class="well">
+{% if currentUserAnnounce is empty %}
+    <h4>Объявлений нет.</h4>
+{% else %}
     <div class="media">
         <div class="media-body">
             <h3 class="media-heading">Объявления пользователя</h3>
@@ -44,4 +47,5 @@
             </table>
         </div>
     </div>
+{% endif %}
 </div>
