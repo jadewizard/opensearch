@@ -105,7 +105,7 @@ class ProjectContent
     {
         global $db, $site;
 
-        $photoPath = $this->avatarUpload($_FILES,null,'annoucne');
+        $photoPath = $this->avatarUpload($_FILES,null,'announcement');
         
         $query = $db->query("INSERT INTO
          os_announcment 
@@ -185,7 +185,7 @@ class ProjectContent
                   }
                   else
                   {
-                       if ($method == 'annoucne')
+                       if ($method == 'announcement')
                        {
                            return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2000px-No_image_available.svg.png';
                        }
