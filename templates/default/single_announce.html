@@ -1,3 +1,4 @@
+<div id="messegeResult"></div>
 {% for content in announceAll %}
 <div class="well">
     <div class="media">
@@ -19,7 +20,10 @@
     </div>
     <p class="text-right">
     <a href="announcement/{{ content.id }}" class="btn btn-primary btn-sm">Подрбнее</a>
-    <a href="#" class="btn btn-warning btn-sm">Учавствовать</a>
+    <form method="post" action="" id="userRequest{{ content.id }}">
+    <input type="hidden" name="selectProject" value="{{ content.id }}">
+    <input type="button" class="btn btn-success btn-sm" onclick="AjaxFormRequest('messegeResult', 'userRequest{{ content.id }}', 'system/user_request.php')" value="Принять участие">
+    </form>
+    </div>
     </p>
-</div>
 {% endfor %}
