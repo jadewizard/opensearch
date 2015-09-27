@@ -20,10 +20,8 @@
     </div>
     <p class="text-right">
     <a href="announcement/{{ content.id }}" class="btn btn-primary btn-sm">Подрбнее</a>
-    <form method="post" action="" id="userRequest{{ content.id }}">
-    <input type="hidden" name="selectProject" value="{{ content.id }}">
-    <input type="button" class="btn btn-success btn-sm" onclick="AjaxFormRequest('messegeResult', 'userRequest{{ content.id }}', 'system/user_request.php')" value="Принять участие">
-    </form>
-    </div>
+    <input type="button" class="btn btn-success btn-sm" value="Принять участие"
+    onclick="AjaxFormRequest({{ content.id }})">
     </p>
+    </div>
 {% endfor %}
