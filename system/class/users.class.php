@@ -207,6 +207,11 @@ class UserFunctions
         }
     }
 
+    public function userRequestInProject()
+    {
+        echo "string";
+    }
+
     /*
     Всем и так понятная функция
     которая помогают юзеру
