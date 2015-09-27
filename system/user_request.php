@@ -1,2 +1,5 @@
 <?php
-print_r($_POST);
+$response = $userContent->userRequestInProject();
+
+echo $response;
+?>
