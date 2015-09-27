@@ -1,4 +1,4 @@
-		<?php
+<?php
 /*
 
 		VAR CONTENT
@@ -68,13 +68,12 @@ else
 //Что бы запретить показ страницы регистрации.
 if (isset($_SESSION['user_id'])) 
 {
-    
     $twig->addGlobal('auth', true);
+    $currentUserId = $_SESSION['user_id'];
     $auth = true;
 } 
 else
 {
-    
     $twig->addGlobal('auth_message', message($input = array('response' => '300')));
 }
 
