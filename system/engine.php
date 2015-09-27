@@ -38,7 +38,6 @@ $userContent->getAllUser(); //пользователи
 
 $currentUserId = $user->user_id($_SESSION); //ID текущего пользователя
 
-
 $projectContent->getPageCount();
 require_once 'system/handler.php'; //Обработчик ошибок
 require_once 'system/registration.php'; //Обработчик регистрации
@@ -49,8 +48,5 @@ require_once 'system/announcement_edit.php';
 require_once 'system/add_announce.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
-
-
-
-
+require_once 'system/user_request.php'; //Обработчки запросов на участие в проекте
 ?>
