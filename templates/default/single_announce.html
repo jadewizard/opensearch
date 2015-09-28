@@ -20,8 +20,9 @@
     </div>
     <p class="text-right">
     <a href="announcement/{{ content.id }}" class="btn btn-primary btn-sm">Подрбнее</a>
-    <input type="button" class="btn btn-success btn-sm" value="Принять участие"
-    onclick="AjaxFormRequest({{ content.id }})">
+    <span id="{{ content.id }}">
+        <input type="button" class="btn btn-success btn-sm" value="Принять участие" onclick="AjaxFormRequest({{ content.id }})">
+    </span>
     </p>
     </div>
 {% endfor %}
