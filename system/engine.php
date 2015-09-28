@@ -48,4 +48,5 @@ require_once 'system/announcement_edit.php';
 require_once 'system/add_announce.php';
 require_once 'content.php'; //Вывод содержимого конктренхы постов на сайт
 require_once 'system/pages.php'; //Обработчик шаблонов
+require_once 'system/user_request.php';
 ?>
