@@ -1,5 +1,5 @@
 <?php
-require_once 'system/engine.php';
+//require_once 'system/engine.php';
 
 class UserFunctions
 {
@@ -207,9 +207,11 @@ class UserFunctions
         }
     }
 
-    public function userRequestInProject()
+    public function userRequestInProject($id,$userId)
     {
-        echo "string";
+        global $db;
+
+        $db->query("INSERT INTO os_user_request (user_id,project_id) VALUES ('$id','$userId')");
     }
 
     /*
