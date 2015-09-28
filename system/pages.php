@@ -69,7 +69,6 @@ else
 if (isset($_SESSION['user_id'])) 
 {
     $twig->addGlobal('auth', true);
-    $currentUserId = $_SESSION['user_id'];
     $auth = true;
 } 
 else
