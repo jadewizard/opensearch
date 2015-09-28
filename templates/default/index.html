@@ -19,7 +19,10 @@ function AjaxFormRequest(id)
       type: "POST",
       url: "system/user_request.php",
       data: {'id': id},
-      success: function(data){alert(data)}
+      success: function(data)
+      {
+           $('#'+id).html('<input type="button" class="btn btn-default btn-sm" value="Заявка отправлена" disabled>');
+      }
     });
 }
 </script>
