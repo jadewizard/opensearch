@@ -18,7 +18,7 @@ function AjaxFormRequest(id)
     $.ajax({
       type: "POST",
       url: "system/user_request.php",
-      data: {id: id},
+      data: {'id': id},
       success: function(data){alert(data)}
     });
 }
