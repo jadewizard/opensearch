@@ -30,9 +30,13 @@ class ProjectContent
             $output_array[$i] = array_combine($input_array_keys, $input_array);
         }
 
-        foreach ($output_array as $elements)
+        if (isset($_SESSION['user_id']))
         {
-            $apply[$elements['id']] = $this->userApply($elements['id'],$_SESSION['user_id']);
+            foreach ($output_array as $elements)
+            {
+                $apply[$elements['id']] = $this->userApply($elements['id'],$_SESSION['user_id']);
+                //Определяем подавал ли юзер заявку на участие в проекте.
+            }
         }
 
         $expArray = $this->explodeAnnounce($output_array);
@@ -48,6 +52,10 @@ class ProjectContent
 
         $data = $db->getRow("SELECT id FROM os_user_request WHERE user_id = '$user_id' AND project_id = '$announce_id'");
 
+        /*
+        Если переменная data > 0, то значит, что текущий пользователь
+        подал заявку на участие в проекте.
+        */
         if (count($data) > 0)
         {
             $apply = 1;
