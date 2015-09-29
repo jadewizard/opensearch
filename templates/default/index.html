@@ -13,17 +13,22 @@
   <link href="/opensearch/templates/default/css/style.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
-function AjaxFormRequest(id)
+function AjaxFormRequest(id,method)
 {
     $.ajax({
       type: "POST",
       url: "system/user_request.php",
-      data: {'id': id},
+      data:
+      {
+      "id": id,
+      "method": method
+      },
       success: function(data)
       {
            $('#'+id).html('<input type="button" class="btn btn-default btn-sm" value="Заявка отправлена" disabled>');
       }
     });
+    //alert(method);
 }
 </script>
 
