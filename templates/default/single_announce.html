@@ -20,19 +20,21 @@
     </div>
     <p class="text-right">
     <a href="announcement/{{ content.id }}" class="btn btn-primary btn-sm">Подрбнее</a>
+
     {% if applyArray[content.id] == 1 %}
 
         <span id="{{ content.id }}">
-            <input type="button" class="btn btn-default btn-sm" value="Отменить запрос" onclick="AjaxFormRequest({{ content.id }})">
+        <input type="button" class="btn btn-default btn-sm" value="Отменить запрос" onclick="AjaxFormRequest({{ content.id }},'cancel')">
         </span>
 
     {% else %}
 
         <span id="{{ content.id }}">
-            <input type="button" class="btn btn-success btn-sm" value="Принять участие" onclick="AjaxFormRequest({{ content.id }})">
+        <input type="button" class="btn btn-success btn-sm" value="Принять участие" onclick="AjaxFormRequest({{ content.id }},'request')">
         </span>
 
     {% endif %}
+
     </p>
     </div>
 {% endfor %}
