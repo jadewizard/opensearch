@@ -27,12 +27,37 @@ class ProjectContent
                 }
                 //break;
             }
-            
             $output_array[$i] = array_combine($input_array_keys, $input_array);
+        }
+
+        foreach ($output_array as $elements)
+        {
+            $apply[$elements['id']] = $this->userApply($elements['id'],$_SESSION['user_id']);
         }
 
         $expArray = $this->explodeAnnounce($output_array);
         $twig->addGlobal('announceAll', ($expArray));
+        $twig->addGlobal("applyArray",$apply);
+    }
+
+    public function userApply($announce_id,$user_id)
+    {
+        //Определяем подавал ли текущий пользователь
+        //Заявку на участие в проекте
+        global $db,$twig;
+
+        $data = $db->getRow("SELECT id FROM os_user_request WHERE user_id = '$user_id' AND project_id = '$announce_id'");
+
+        if (count($data) > 0)
+        {
+            $apply = 1;
+        }
+        else
+        {   
+            $apply = 0;
+        }
+        
+        return $apply;
     }
 
     public function explodeAnnounce($array)
