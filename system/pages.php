@@ -177,6 +177,49 @@ if (isset($_GET['announcement']))
     } 
 }
 
+//Страница конкретного проекта
+//index.php?announcement=[ID]
+if (isset($_GET['projects'])) 
+{
+    $sidebar = 'sidebar_announce.html';
+    $content = 'project_page.html';
+    $core = 'announce';
+    /*
+    Указываем, что страница объявления.
+    В дальншейм если эта переменная будет
+    равна announe, то будет выводится кнопка
+    страничка проекта.
+    */
+    
+    /*
+    Определяем является ли текущий пользователь
+    Владельцем того проекта на котором находится
+    В данный момент и возвращаем шаблонизатору
+    true или false в зависимости от рез-та
+    */
+    $isOwnerAnnounce = $user->isOwnerAnnounce($user->user_id($_SESSION),$_GET['announcement']);
+
+    if (isset($_GET['act']) && $_GET['act'] == 'edit') 
+    {
+        
+        if ($auth == true) 
+        {
+            //Если пользователь авторизирован
+            $announcementInfo = $projectContent->getThisAnnouncement((int) $_GET['announcement']);
+            
+            if ($isOwnerAnnounce == false) 
+            {
+                // Если пользователь не владелец текущего ID
+                header('Location: http://localhost/index.php?user=' . $_SESSION['user_id'] . '');
+                exit();
+            }
+        }
+        
+        $sidebar = 'sidebar_announce.html';
+        $content = 'announcement/edit.html';
+    } 
+}
+
 $template = $twig->loadTemplate('index.html');
 //Функция которая проверит залогинен ли наш юзер
 $cabinet = $userContent->GetUserCabinet($_SESSION);
