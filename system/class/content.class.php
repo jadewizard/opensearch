@@ -39,9 +39,48 @@ class ProjectContent
             }
         }
 
+        print_r($apply);
+
         $expArray = $this->explodeAnnounce($output_array);
         $twig->addGlobal('announceAll', ($expArray));
         $twig->addGlobal("applyArray",$apply);
+    }
+
+    public function getAllProjects() 
+    {
+        global $db, $twig;
+        
+        $this->data = $db->getAll("SELECT * FROM os_project");
+        
+        for ($i = 0; $i < count($this->data); $i++) 
+        {
+            $input_array = array_values($this->data[$i]); //Значения
+            $input_array_keys = array_keys($this->data[$i]); //Ключи
+            
+            for ($a = 0; $a < count($input_array); $a++) 
+            {
+                if (empty($input_array[$a])) 
+                {
+                    $input_array[$a] = 'Не указанно';
+                }
+                //break;
+            }
+            $output_array[$i] = array_combine($input_array_keys, $input_array);
+        }
+
+        if (isset($_SESSION['user_id']))
+        {
+            foreach ($output_array as $elements)
+            {
+                $apply[$elements['id']] = $this->userApply($elements['id'],$_SESSION['user_id']);
+                //Определяем подавал ли юзер заявку на участие в проекте.
+            }
+        }
+
+        $expArray = $this->explodeAnnounce($output_array);
+        $twig->addGlobal('projectsAll', ($expArray));
+        //$twig->addGlobal("applyArray",$apply);
+        //Временно.
     }
 
     public function userApply($announce_id,$user_id)
