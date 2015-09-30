@@ -37,13 +37,12 @@ class ProjectContent
                 $apply[$elements['id']] = $this->userApply($elements['id'],$_SESSION['user_id']);
                 //Определяем подавал ли юзер заявку на участие в проекте.
             }
-        }
 
-        print_r($apply);
+            $twig->addGlobal("applyArray",$apply);
+        }
 
         $expArray = $this->explodeAnnounce($output_array);
         $twig->addGlobal('announceAll', ($expArray));
-        $twig->addGlobal("applyArray",$apply);
     }
 
     public function getAllProjects() 
@@ -154,6 +153,35 @@ class ProjectContent
         global $db, $twig;
         
         $this->data = $db->getAll('SELECT * FROM os_announcment WHERE id=' . $id . '');
+        
+        $input_array_keys = array_keys($this->data[0]); //Ключи
+        $input_array = array_values($this->data[0]); //Значения
+        
+        for ($i = 0; $i < count($input_array); $i++) 
+        {
+            
+            if (empty($input_array[$i])) 
+            {
+                $input_array[$i] = 'Не указанно';
+            }
+        }
+        
+        $output_array = array_combine($input_array_keys, $input_array);
+        
+        $twig->addGlobal('announceContent', $output_array);
+        return $this->data[0];
+    }
+
+    /*
+     * Функция для получения
+     * Массива с контеном
+     * Текущего (id) проекта
+    */
+    public function getThisProject($id) 
+    {
+        global $db, $twig;
+        
+        $this->data = $db->getAll('SELECT * FROM os_project WHERE id=' . $id . '');
         
         $input_array_keys = array_keys($this->data[0]); //Ключи
         $input_array = array_values($this->data[0]); //Значения
