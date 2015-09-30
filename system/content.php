@@ -32,6 +32,21 @@ if (isset($_GET['announcement']))
     }
 }
 
+if (isset($_GET['projects'])) 
+{
+    $id = $site->auto_clean((int)$_GET['projects']);
+    $check = $site->sql_check($id, 'announcement');
+    
+    if (count($check) > 0) 
+    {
+         $projectContent->getThisProject($id);
+    } 
+    else
+    {
+         header('Location: index.php?page=404');
+    }
+}
+
 if (isset($_GET['user'])) 
 {
     $id = $site->auto_clean((int)$_GET['user']);
