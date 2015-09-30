@@ -34,18 +34,26 @@ if (isset($_GET['page']))
             $content = 'single_announce.html';
             $paginationTmp = 'pagination.html';
             break;
-            //Страница всех людей/
+        //Страница всех объявлений
+
+        case 'projects':
+            $sidebar = 'sidebar_projects.html';
+            $content = 'single_project.html';
+            $paginationTmp = 'pagination.html';
+            break;
+        //Страница всех объявлений
             
         case 'users':
             $sidebar = 'sidebar_users.html';
             $content = 'single_user.html';
             break;
-            //Страница регистрации
+         //Страница всех людей/
             
         case 'registration':
             $sidebar = 'sidebar_projects.html';
             $content = 'registration.html';
             break;
+        //Страница регистрации
 
         default:
             $sidebar = 'sidebar_projects.html';
