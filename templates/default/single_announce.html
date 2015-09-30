@@ -21,6 +21,8 @@
     <p class="text-right">
     <a href="announcement/{{ content.id }}" class="btn btn-primary btn-sm">Подрбнее</a>
 
+    {% if auth == true %}
+
     {% if applyArray[content.id] == 1 %}
 
         <span id="{{ content.id }}">
@@ -32,6 +34,12 @@
         <span id="{{ content.id }}">
         <input type="button" class="btn btn-success btn-sm" value="Принять участие" onclick="AjaxFormRequest({{ content.id }},'request')">
         </span>
+
+    {% endif %}
+
+    {% else %}
+
+        <a href="registration?ref=a{{ content.id }}" class="btn btn-success btn-sm">Принять участие</a>
 
     {% endif %}
 
