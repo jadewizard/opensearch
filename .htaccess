@@ -6,3 +6,4 @@ RewriteRule ^registration(/?)+$ index.php?page=registration [QSA]
 
 RewriteRule ^announcement/([0-9]+)(/?)+$ index.php?announcement=$1 [QSA,L]
 RewriteRule ^users/([0-9]+)(/?)+$ index.php?user=$1 [QSA,L]
+RewriteRule ^projects/([0-9]+)(/?)+$ index.php?projects=$1 [QSA,L]
