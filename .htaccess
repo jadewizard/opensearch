@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteRule ^announcement(/?)+$ index.php?page=announcement [QSA]
 RewriteRule ^users(/?)+$ index.php?page=users [QSA]
+RewriteRule ^projects(/?)+$ index.php?page=projects [QSA]
 RewriteRule ^registration(/?)+$ index.php?page=registration [QSA]
 
 RewriteRule ^announcement/([0-9]+)(/?)+$ index.php?announcement=$1 [QSA,L]
