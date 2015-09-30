@@ -31,6 +31,7 @@ $paginationManager = new paginations(); //Пагинация
 
 //Получаем все объявления и юзеров
 $projectContent->getAllAnnouncement(); //Объялвения
+$projectContent->getAllProjects(); //Проекты
 $userContent->getAllUser(); //пользователи
 
 //Получаем список всех стран мира
