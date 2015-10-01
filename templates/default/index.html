@@ -30,6 +30,143 @@ function AjaxFormRequest(id,method)
     });
     //alert(method);
 }
+
+var error = 0;
+
+function regCheck()
+{
+    var thisForm = document.forms["regform"];
+    //Наша форма
+    var thisLogin = thisForm.elements["login"].value;
+    //Получаем логин
+    var thisEmail = thisForm.elements["email"].value;
+    //Получаем мыло
+    var thisName = thisForm.elements["name"].value;
+    //Получаем имя
+    var thisPass = thisForm.elements["pass"].value;
+    //Получаем пасс
+
+    var loginReg = /[0-9a-z_A-Z]/i;
+    //Регулярка для логина
+    var emailReg = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+    //Регулярка для мыла
+    var passReg = /^[0-9a-z_A-Z\?\*\-\_\@\#]+$/;
+    //Регулярка для пароля
+    var nameReg = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/;
+    //Регулярка для имени
+
+    if ((thisLogin != "") && (thisEmail != "") && (thisName != "") && (thisPass != ""))
+    {
+        //======= LOGIN ======//
+        
+        if (loginReg.test(thisLogin) == true)
+        {
+            if (thisLogin.length <= 4)
+            {
+                ++error;
+                errorMsg = 'Логин 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Логин должен содержать не менее 4-х символов</div>');
+            }
+
+            if (thisLogin.length > 30)
+            {
+                ++error;
+                errorMsg = 'Логин 2';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Логин должен содержать не более 30-и символов</div>');
+            }
+        }
+        else
+        {
+            ++error;
+            errorMsg = 'Логин 3';
+            $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Логин должен состоять только из латинских букв и цифр (0-9)</div>');
+        }
+
+        //======= EMAIL ======//
+
+        if (emailReg.test(thisEmail) == true)
+        {
+            if (thisEmail.length > 100)
+            {
+                ++error;
+                errorMsg = 'Mail 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">E-Mail должен содрежать не более 100 символов</div>');
+            }
+        }
+        else
+        {
+            ++error;
+            errorMsg = 'Mail 2';
+            $('#regMsg').html('<div class="alert alert-dismissible alert-danger">E-Mail должен содержать латинские буквы и цифры (0-9), а также "@" (собака)</div>');
+        }
+
+        //======= PASS ======//
+
+        if (passReg.test(thisPass) == true)
+        {
+            if (thisPass.length < 6)
+            {
+                ++error;
+                errorMsg = 'Mail 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Пароль должен состоять минимум из 6-ми символов</div>');
+            }
+
+            if (thisPass.length > 99)
+            {
+                ++error;
+                errorMsg = 'Mail 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Пароль не должен содержать более 100 символов</div>');
+            }
+        }
+        else
+        {
+            ++error;
+            errorMsg = 'Mail 2';
+            $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Пароль может состоять из английских букв, цифр и символов \"? * - _ @ #\"!</div>');
+        }
+
+        //======= NAME ======//
+
+        if (nameReg.test(thisName) == true)
+        {
+            if (thisName.length = 1)
+            {
+                ++error;
+                errorMsg = 'Mail 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Имя должно содержать не менее 1 символа</div>');
+            }
+
+            if (thisName.length > 100)
+            {
+                ++error;
+                errorMsg = 'Mail 1';
+                $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Имя должно содержать не более 100 символов</div>');
+            }
+        }
+        else
+        {
+            ++error;
+            errorMsg = 'Mail 2';
+            $('#regMsg').html('<div class="alert alert-dismissible alert-danger">
+              Имя должно состоять из английских и русских букв</div>');
+        }
+    }
+    else
+    {
+        ++error;
+        $('#regMsg').html('<div class="alert alert-dismissible alert-danger">Заполните все поля</div>');
+    }
+
+    if (error == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 </script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
