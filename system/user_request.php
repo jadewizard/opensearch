@@ -8,7 +8,7 @@ ini_set('display_startup_errors', 1);
 require_once 'class/users.class.php';
 require_once 'class/safemysql.class.php';
 
-$db = new SafeMysql(array('user' => 'root', 'pass' => '211996', 'db' => 'db', 'charset' => 'utf8'));
+$db = new SafeMysql(array('user' => 'root', 'pass' => '211996dima', 'db' => 'db', 'charset' => 'utf8'));
 $user = new UserFunctions;
 print_r($_POST);
 
